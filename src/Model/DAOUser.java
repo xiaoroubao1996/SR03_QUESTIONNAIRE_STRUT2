@@ -49,15 +49,16 @@ public class DAOUser implements DAOInterface<User> {
         try {
             conn = SQL.getSQLConnection();
             String sql;
-            sql = "SELECT * FROM User WHERE id= ? ";
+            sql = "SELECT * FROM User WHERE id= (?) ";
             sqlPrepare=conn.prepareStatement(sql);
+
             sqlPrepare.setInt(1,id);
-            result = sqlPrepare.executeQuery(sql);
+            result = sqlPrepare.executeQuery();
             while (result.next()) {
                 user = new User(Integer.valueOf(result.getInt("id")),
                         result.getString("email"),
                         result.getString("password"),
-                        result.getString("firstLame"),
+                        result.getString("firstName"),
                         result.getString("lastName"),
                         result.getString("company"),
                         result.getString("telephone"),
@@ -92,7 +93,7 @@ public class DAOUser implements DAOInterface<User> {
                 User user = new User(Integer.valueOf(result.getInt("id")),
                         result.getString("email"),
                         result.getString("password"),
-                        result.getString("firstLame"),
+                        result.getString("firstName"),
                         result.getString("lastName"),
                         result.getString("company"),
                         result.getString("telephone"),
@@ -150,8 +151,8 @@ public class DAOUser implements DAOInterface<User> {
             conn = SQL.getSQLConnection();
             
             String sql;
-            sql = "UPDATE User SET email= ?, password= ?, firstName= ?, lastName= ?, company=?, telephone=?, status=?"
-                    + "type=?, WHERE id=?";
+            sql = "UPDATE User SET email= ?, password= ?, firstName= ?, lastName= ?, company=?, telephone=?, status=?,"
+                    + "type=? WHERE id=?";
 
             sqlPrepare=conn.prepareStatement(sql);
             sqlPrepare.setString(1,user.getEmail());
