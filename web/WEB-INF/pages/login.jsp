@@ -14,12 +14,12 @@
 </head>
 <body>
 <div>Login</div>
-<form action="/action/login" method="post">
+<form action="login" method="post">
     <label>Email</label>
-    <input type="email" id="email" name="User email"/>
+    <input type="email" id="email" name="email"/>
     <br>
     <label> Password </label>
-    <input type="password" id="psw" name="User password"/>
+    <input type="password" id="psw" name="password"/>
     <br>
     <input type="submit" value="Login">
 </form>
