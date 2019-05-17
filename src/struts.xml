@@ -5,7 +5,7 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="true"/>
     <package name="Action" extends="struts-default">
 
         <action name="login"
@@ -19,6 +19,12 @@
                 class="Action.HelloWorldAction"
                 method="execute">
             <result name="success">/HelloWorld.jsp</result>
+        </action>
+
+        <action name="displayQuestionnaireList"
+                class="Action.displayQuestionnaireListAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/questionnaireList.jsp</result>
         </action>
     </package>
 </struts>
