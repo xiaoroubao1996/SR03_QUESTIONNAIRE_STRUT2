@@ -1,4 +1,4 @@
-package Model;
+package Action;
 
 public class HelloWorldAction{
     private String name;
