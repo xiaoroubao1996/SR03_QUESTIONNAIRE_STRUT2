@@ -14,16 +14,16 @@ public class DAOQuestion implements DAOInterface<Question>{
             conn = SQL.getSQLConnection();
             
             String sql;
-            sql = "select * from Answer where id=?";
+            sql = "select * from Question where id=?";
             sqlPrepare = conn.prepareStatement(sql);
             sqlPrepare.setInt(1, id);
             result = sqlPrepare.executeQuery();
             while (result.next()) {
-                question = new Question(Integer.valueOf(result.getInt("id")),
+                question = new Question(result.getInt("id"),
                         result.getString("text"),
-                        Integer.valueOf(result.getInt("position")),
+                        result.getInt("position"),
                         Constant.STATUS.valueOf(result.getString("status")),
-                        Integer.valueOf(result.getInt("questionnaire")));
+                        result.getInt("questionnaire"));
             }
             
             conn.close();
@@ -46,15 +46,15 @@ public class DAOQuestion implements DAOInterface<Question>{
             conn = SQL.getSQLConnection();
             
             String sql;
-            sql = "select * from Answer";
+            sql = "select * from Question";
             sqlPrepare = conn.prepareStatement(sql);
             result = sqlPrepare.executeQuery();
             while (result.next()) {
-                Question question = new Question(Integer.valueOf(result.getInt("id")),
+                Question question = new Question(result.getInt("id"),
                     result.getString("text"),
-                    Integer.valueOf(result.getInt("position")),
+                    result.getInt("position"),
                     Constant.STATUS.valueOf(result.getString("status")),
-                    Integer.valueOf(result.getInt("questionnaire")));
+                    result.getInt("questionnaire"));
                 resultList.add(question);
             }
             
@@ -154,11 +154,11 @@ public class DAOQuestion implements DAOInterface<Question>{
             sqlPrepare.setInt(1, id);
             result=sqlPrepare.executeQuery();
             while (result.next()) {
-                Question question = new Question(Integer.valueOf(result.getInt("id")),
+                Question question = new Question(result.getInt("id"),
                         result.getString("text"),
-                        Integer.valueOf(result.getInt("position")),
+                        result.getInt("position"),
                         Constant.STATUS.valueOf(result.getString("status")),
-                        Integer.valueOf(result.getInt("questionnaire")));
+                        result.getInt("questionnaire"));
                 resultList.add(question);
             }
             

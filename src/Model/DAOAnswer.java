@@ -22,12 +22,12 @@ public class DAOAnswer implements DAOInterface<Answer> {
             sqlPrepare.setInt(1, id);
             result = sqlPrepare.executeQuery();
             while (result.next()) {
-                answer = new Answer(Integer.valueOf(result.getInt("id")),
+                answer = new Answer(result.getInt("id"),
                         result.getString("text"),
-                        Integer.valueOf(result.getInt("position")),
+                        result.getInt("position"),
                         result.getBoolean("correction"),
                         Constant.STATUS.valueOf(result.getString("status")),
-                        Integer.valueOf(result.getInt("question")));
+                        result.getInt("question"));
             }
             
             conn.close();
@@ -54,12 +54,12 @@ public class DAOAnswer implements DAOInterface<Answer> {
             sqlPrepare = conn.prepareStatement(sql);
             result = sqlPrepare.executeQuery();
             while (result.next()) {
-                Answer answer = new Answer(Integer.valueOf(result.getInt("id")),
+                Answer answer = new Answer(result.getInt("id"),
                         result.getString("text"),
-                        Integer.valueOf(result.getInt("position")),
+                        result.getInt("position"),
                         result.getBoolean("correction"),
                         Constant.STATUS.valueOf(result.getString("status")),
-                        Integer.valueOf(result.getInt("question")));
+                        result.getInt("question"));
                 resultList.add(answer);
             }
             
@@ -162,12 +162,12 @@ public class DAOAnswer implements DAOInterface<Answer> {
             sqlPrepare.setInt(1, id);
             result=sqlPrepare.executeQuery();
             while (result.next()) {
-                Answer answer = new Answer(Integer.valueOf(result.getInt("id")),
+                Answer answer = new Answer(result.getInt("id"),
                         result.getString("text"),
-                        Integer.valueOf(result.getInt("position")),
+                        result.getInt("position"),
                         result.getBoolean("correction"),
                         Constant.STATUS.valueOf(result.getString("status")),
-                        Integer.valueOf(result.getInt("question")));
+                        result.getInt("question"));
                 resultList.add(answer);
             }
             

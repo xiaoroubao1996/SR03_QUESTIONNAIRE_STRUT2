@@ -22,8 +22,8 @@ public class DAOResult implements DAOInterface<Result> {
             result = sqlPrepare.executeQuery();
             if (result.next()){
                 SQLresult = new Result(
-                        Integer.valueOf(result.getString("id")),
-                        Integer.valueOf(result.getString("score")),
+                        result.getInt("id"),
+                        result.getInt("score"),
                         result.getDate("dateCreation"),
                         result.getInt("trainee"),
                         result.getString("json")
@@ -54,8 +54,8 @@ public class DAOResult implements DAOInterface<Result> {
             result = sqlPrepare.executeQuery(sql);
             while (result.next()){
                 Result SQLresult = new Result(
-                        Integer.valueOf(result.getString("id")),
-                        Integer.valueOf(result.getString("score")),
+                        result.getInt("id"),
+                        result.getInt("score"),
                         result.getDate("dateCreation"),
                         result.getInt("trainee"),
                         result.getString("json")
@@ -157,8 +157,8 @@ public class DAOResult implements DAOInterface<Result> {
             result = sqlPrepare.executeQuery();
             while (result.next()){
                 Result SQLresult = new Result(
-                        Integer.valueOf(result.getString("id")),
-                        Integer.valueOf(result.getString("score")),
+                        result.getInt("id"),
+                        result.getInt("score"),
                         result.getDate("dateCreation"),
                         result.getInt("trainee"),
                         result.getString("json")

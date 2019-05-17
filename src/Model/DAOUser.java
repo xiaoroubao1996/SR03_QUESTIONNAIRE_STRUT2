@@ -19,7 +19,7 @@ public class DAOUser implements DAOInterface<User> {
             sqlPrepare.setString(1,String.valueOf(email));
             result = sqlPrepare.executeQuery();
             while (result.next()) {
-                user = new User(Integer.valueOf(result.getInt("id")),
+                user = new User(result.getInt("id"),
                         result.getString("email"),
                         result.getString("password"),
                         result.getString("firstName"),
@@ -55,7 +55,7 @@ public class DAOUser implements DAOInterface<User> {
             sqlPrepare.setInt(1,id);
             result = sqlPrepare.executeQuery();
             while (result.next()) {
-                user = new User(Integer.valueOf(result.getInt("id")),
+                user = new User(result.getInt("id"),
                         result.getString("email"),
                         result.getString("password"),
                         result.getString("firstName"),
@@ -90,7 +90,7 @@ public class DAOUser implements DAOInterface<User> {
             sqlPrepare=conn.prepareStatement(sql);
             result = sqlPrepare.executeQuery();
             while (result.next()) {
-                User user = new User(Integer.valueOf(result.getInt("id")),
+                User user = new User(result.getInt("id"),
                         result.getString("email"),
                         result.getString("password"),
                         result.getString("firstName"),
