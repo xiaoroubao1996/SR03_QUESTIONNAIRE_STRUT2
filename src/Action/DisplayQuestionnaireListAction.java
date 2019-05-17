@@ -8,15 +8,10 @@ import java.util.ArrayList;
 public class DisplayQuestionnaireListAction {
     ArrayList<Questionnaire> questionnaireList;
 
-
-
-
-    public String execute(){
+    public String execute() {
         questionnaireList = DAOFactory.getDAOQuestionnaire().selectAll();
         return "success";
     }
-
-
 
     public ArrayList<Questionnaire> getQuestionnaireList() {
         return questionnaireList;

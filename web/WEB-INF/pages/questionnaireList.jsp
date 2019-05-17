@@ -1,5 +1,5 @@
 <%@ page import="Model.Constant" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhuchenyan
@@ -46,20 +46,21 @@
             }
         %>
     </tr>
-    <c:forEach var="questionnaire" items="${questionnaireList}">
+
+    <s:iterator value="questionnaireList">
 
         <tr>
             <td>
-                <c:out value="${questionnaire.getId()}"/>
+                <s:property value="id" />
             </td>
             <td>
-                <c:out value="${questionnaire.getSubject()}"/>
+                <s:property value="subject" />
             </td>
             <%
                 if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
             %>
             <td>
-                <c:out value="${questionnaire.getStatus()}"/>
+                <s:property value="status" />
             </td>
             <%
                 }
@@ -72,10 +73,10 @@
             </td>
 
         </tr>
-    </c:forEach>
+    </s:iterator>
 </table>
 
-<form action="/index">
+<form action="index">
     <input type="submit" value="Return"/>
 </form>
 
