@@ -20,15 +20,13 @@
 </form>
 
 <%
-    System.out.println(session.getAttribute("type"));
-    System.out.println(session.getAttribute("type"));
     if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
 %>
 
 <form action="/createUser" method="get">
     <input type="submit" value="Create user"/>
 </form>
-<form action="/User/all" method="get">
+<form action="userList" method="get">
     <input type="submit" value="User list"/>
 </form>
 

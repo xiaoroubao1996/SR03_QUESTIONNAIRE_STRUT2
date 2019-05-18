@@ -22,9 +22,8 @@ public class LoginInterceptor extends AbstractInterceptor {
         LoginAction loginAction = (LoginAction) invocation.getAction();
         loginAction.setEmail(email);
         loginAction.setPassword(password);
-        loginAction.validate();
-        String result = invocation.invoke();
-        if (result == "success") {
+//        loginAction.validate();
+        if (AccountHelper.isAuthentic(email, password)) {
             User user = AccountHelper.getUserInformationByEmail(email);
             if (user.getPassword().equals(password)) {
                 session.setAttribute("id", user.getId());
@@ -34,6 +33,6 @@ public class LoginInterceptor extends AbstractInterceptor {
                 session.setAttribute("type", user.getType());
             }
         }
-        return result;
+        return invocation.invoke();
     }
 }

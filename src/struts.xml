@@ -17,17 +17,39 @@
             <interceptor name="loginInterceptor"
                          class="Interceptor.LoginInterceptor" >
             </interceptor>
+            <interceptor name="IsAdminInterceptor"
+                         class="Interceptor.IsAdminInterceptor" >
+            </interceptor>
         </interceptors>
 
         <!--interceptor done-->
 
         <!--action-->
 
+        <action name="index">
+            <result>/WEB-INF/pages/index.jsp</result>
+        </action>
+
         <action name="login"
                 class="Action.LoginAction"
                 method="execute">
             <interceptor-ref name="loginInterceptor" />
             <result name="success">/WEB-INF/pages/index.jsp</result>
+            <result name="authorizationFailure">/WEB-INF/pages/error.jsp</result>
+        </action>
+
+        <action name="userList"
+                class="Action.UserListAction"
+                method="execute">
+            <interceptor-ref name="IsAdminInterceptor" />
+            <result name="success">/WEB-INF/pages/userList.jsp</result>
+            <result name="authorizationFailure">/WEB-INF/pages/AuthorizationFailure.jsp</result>
+        </action>
+
+        <action name="editUser"
+                class="Action.UserListAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/userList.jsp</result>
             <result name="failure">/WEB-INF/pages/error.jsp</result>
         </action>
 

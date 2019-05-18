@@ -26,7 +26,8 @@
         <td> Type </td>
         <td> Edit </td>
     </tr>
-<%
+
+    <%
     List<User> list = (List)request.getAttribute("userList");
     Iterator<User> it = list.iterator();
     while(it.hasNext()){
@@ -42,11 +43,11 @@
             <td><%= user.getStatus() %></td>
             <td><%= user.getType() %></td>
             <td>
-                <form action="/editUser/" method="get">
+                <form action="editUser" method="get">
                     <input type="hidden" name="userId" value="<%= user.getId()%>">
                     <input type="submit" value="Edit"/>
                 </form>
-            </td>>
+            </td>
         </tr>
         <%
     }
