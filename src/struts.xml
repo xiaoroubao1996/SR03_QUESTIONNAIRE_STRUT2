@@ -97,6 +97,12 @@
                 method="execute">
             <result name="success">/WEB-INF/pages/resultList.jsp</result>
         </action>
+
+        <action name="resultDetail"
+                class="Action.DisplayResultDetailAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/resultDetail.jsp</result>
+        </action>
         <!--action done-->
     </package>
 

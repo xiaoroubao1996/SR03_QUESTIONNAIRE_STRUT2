@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhuchenyan
@@ -9,54 +9,54 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Result</title>
+    <title>Result detail</title>
 </head>
 <body>
-<div><c:out value="${questionnaire.getSubject()}"/></div>
-<table>
+<div><s:property value="questionText"/></div>
 
-    <tr>
-        <td>
-            Questionn Id
-        </td>
-        <td>
-            Subject
-        </td>
-    </tr>
-    <c:forEach var="question" items="${questionList}">
+<br>
+<br>
 
-        <tr>
-            <td>
-                <c:out value="${question.getId()}"/>
-            </td>
-            <td>
-                <c:out value="${question.getText()}"/>
-            </td>
-        </tr>
-        <tr>
-            <input type="radio" id="'${question.getId()}'+'1'" name="${question().getId()}" checked="${question().getAnswers().get(0).getChecked()}">
-            <label for="'${question.getId()}'+'1'" color="${question().getAnswers().get(0).getChecked()&&!question().getAnswers().get(0).getCorrection()}">${question().getAnswers().get(0).getText() }</label>
-        </tr>
+<s:set name="correction" value="correction"/>
+<s:set name="choice" value="choice"/>
+<div
+        <s:if test="%{#correction==0}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction!=0&&#choice==0}">style='color: #FF0000;'</s:if>
+>
+    <s:property value="answerText1"/></div>
 
-        <tr>
-            <input type="radio" id="'${question.getId()}'+'2'" name="${question().getId()}" checked="${question().getAnswers().get(1).getChecked()}">
-            <label for="'${question.getId()}'+'2'" color="${question().getAnswers().get(0).getChecked()&&!question().getAnswers().get(1).getCorrection()}">${question().getAnswers().get(1).getText()}</label>
-        </tr>
+<div
+        <s:if test="%{#correction==1}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction!=1&&#choice==1}">style='color: #FF0000;'</s:if>
+>
+    <s:property value="answerText2"/></div>
 
-        <tr>
-            <input type="radio" id="'${question.getId()}'+'3'" name="${question().getId()}" checked="${question().getAnswers().get(2).getChecked()}">
-            <label for="'${question.getId()}'+'3'" color="${question().getAnswers().get(0).getChecked()&&!question().getAnswers().get(2).getCorrection()}">${question().getAnswers().get(2).getText()}</label>
-        </tr>
+<div
+        <s:if test="%{#correction==2}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction!=2&&#choice==2}">style='color: #FF0000;'</s:if>
+>
+    <s:property value="answerText3"/></div>
 
-        <tr>
-            <input type="radio" id="'${question.getId()}'+'4'" name="${question().getId()}" checked="${question().getAnswers().get(3).getChecked()}">
-            <label for="'${question.getId()}'+'4'" color="${question().getAnswers().get(0).getChecked()&&!question().getAnswers().get(3).getCorrection()}">${question().getAnswers().get(3).getText()}</label>
-        </tr>
-    </c:forEach>
-</table>
+<div
+        <s:if test="%{#correction==3}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction!=3&&#choice==3}">style='color: #FF0000;'</s:if>
+>
+    <s:property value="answerText4"/></div>
 
-<form action="/resultList" method="post">
-    <input type="submit" value="Result list"/>
+<br>
+
+
+<s:set name="lastQuestion" value="lastQuestion"/>
+<s:if test="%{#lastQuestion==false}">
+    <form action="resultDetail" method="post">
+        <input type="hidden" name="resultId" value="<s:property value="resultId"/>"/>
+        <input type="hidden" name="index" value="<s:property value="index"/>"/>
+        <input type="submit" value="Next"/>
+    </form>
+</s:if>
+
+<form action="index" method="post">
+    <input type="submit" value="Return"/>
 </form>
 
 

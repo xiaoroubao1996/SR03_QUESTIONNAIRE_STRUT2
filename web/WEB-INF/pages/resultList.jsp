@@ -56,7 +56,7 @@
     </s:iterator>
 </table>
 
-<form action="/index">
+<form action="index">
     <input type="submit" value="Return"/>
 </form>
 </body>

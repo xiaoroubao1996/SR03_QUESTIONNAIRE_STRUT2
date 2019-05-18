@@ -35,6 +35,7 @@
 <form action="displayQuestionnaire" method="post">
     <s:property value="questionText"/>
     <br>
+    <br>
     <input type="radio" id="choice1" name="choice" value="0">
     <label for="choice1"><s:property value="answerText1"/></label>
 
@@ -60,7 +61,7 @@
     <input type="submit" value="Next"/>
 
 </form>
-<form action="/index" method="post">
+<form action="index" method="post">
     <input type="submit" value="Abandon"/>
 </form>
 </body>
