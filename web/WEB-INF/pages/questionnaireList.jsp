@@ -66,8 +66,8 @@
                 }
             %>
             <td>
-                <form action="/questionnaire" method="post">
-                    <input type="hidden" name="questionnaireId" value="${questionnaire.getId()}"/>
+                <form action="displayQuestionnaire" method="post">
+                    <input type="hidden" name="questionnaireId" value="${id}"/>
                     <input type="submit" value="Enter"/>
                 </form>
             </td>

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="/questionnaireList" method="post">
+<form action="displayQuestionnaireList" method="post">
     <input type="submit" value="Questionnaire list"/>
 </form>
 <form action="/resultList" method="post">

@@ -50,8 +50,14 @@
     <input type="radio" id="choice4" name="choice" value="3">
     <label for="choice4"><s:property value="answerText4"/></label>
 
-    <input type="hidden" name="json" value="%{json}"/>
-    <input type="hidden" name="index" value="%{index}"/>
+
+    <input type="hidden" name="jsonString" value="<s:property value="jsonString"/>"/>
+    <input type="hidden" name="index" value="<s:property value="index"/>"/>
+
+    <br>
+
+
+    <input type="submit" value="Next"/>
 
 </form>
 <form action="/index" method="post">

@@ -2,16 +2,18 @@ package Action;
 
 import Helper.SortHelper;
 import Model.*;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class DisplayQuestionnaireAction {
     //input data
     int questionnaireId;
     int index;
-    int choice;
+    String choice;
 
 
     //output data
@@ -21,6 +23,7 @@ public class DisplayQuestionnaireAction {
     String answerText3;
     String answerText4;
 
+    boolean lastQuestion;
     double score;
 
 
@@ -30,23 +33,25 @@ public class DisplayQuestionnaireAction {
 
 
     public String execute() {
-        json = new JSONObject(jsonString);
+        lastQuestion=false;
         if (index == 0) {
             //first question
-            generateJson();
+            json=generateJson();
         } else {
+            json = new JSONObject( StringEscapeUtils.unescapeJson(jsonString));
             saveChoice();
         }
 
 
-        getQuestion(index + 1);
 
-        if (index == (json.getJSONArray("question").length() - 1)) {
+        if (index == (json.getJSONArray("question").length())) {
             //last question
+            lastQuestion=true;
             calculateResult();
             jsonString = json.toString();
             return "finish";
         } else {
+            getQuestion(index);
             jsonString = json.toString();
             index++;
             return "success";
@@ -58,9 +63,11 @@ public class DisplayQuestionnaireAction {
         int rightQuestion = 0;
         int totalQuestion = questions.length();
         for (int i = 0; i < totalQuestion; i++) {
-            int choice = questions.getJSONObject(i).getInt("choice");
-            if ( questions.getJSONObject(i).getJSONArray("answer").getJSONObject(choice).getBoolean("correction")==true){
-                rightQuestion++;
+            String choice = questions.getJSONObject(i).getString("choice");
+            if(choice!=null) {
+                if (questions.getJSONObject(i).getJSONArray("answer").getJSONObject(Integer.valueOf(choice)).getBoolean("correction") == true) {
+                    rightQuestion++;
+                }
             }
         }
         score=rightQuestion/totalQuestion;
@@ -68,7 +75,7 @@ public class DisplayQuestionnaireAction {
 
     private void saveChoice() {
         JSONArray questions = json.getJSONArray("question");
-        JSONObject currentQuestion = questions.getJSONObject(index);
+        JSONObject currentQuestion = questions.getJSONObject(index-1);
         currentQuestion.put("choice", choice);
     }
 
@@ -122,7 +129,7 @@ public class DisplayQuestionnaireAction {
             questionListJson.put(questionJson);
         });
         Json.put("question", questionListJson);
-        return json;
+        return Json;
     }
 
     private void getQuestion(int index) {
@@ -200,11 +207,11 @@ public class DisplayQuestionnaireAction {
         this.index = index;
     }
 
-    public int getChoice() {
+    public String getChoice() {
         return choice;
     }
 
-    public void setChoice(int choice) {
+    public void setChoice(String choice) {
         this.choice = choice;
     }
 
@@ -215,4 +222,21 @@ public class DisplayQuestionnaireAction {
     public void setJsonString(String jsonString) {
         this.jsonString = jsonString;
     }
+
+    public boolean isLastQuestion() {
+        return lastQuestion;
+    }
+
+    public void setLastQuestion(boolean lastQuestion) {
+        this.lastQuestion = lastQuestion;
+    }
+
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
 }
