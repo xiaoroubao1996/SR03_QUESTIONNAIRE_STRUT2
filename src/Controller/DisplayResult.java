@@ -44,6 +44,6 @@ public class DisplayResult extends HttpServlet {
 //        });
 //        req.setAttribute("questionnaire", questionnaire);
 //        req.setAttribute("questionList", questionList);
-//        req.getRequestDispatcher("/WEB-INF/pages/result.jsp").forward(req, resp);
+//        req.getRequestDispatcher("/WEB-INF/pages/resultDetail.jsp").forward(req, resp);
     }
 }
