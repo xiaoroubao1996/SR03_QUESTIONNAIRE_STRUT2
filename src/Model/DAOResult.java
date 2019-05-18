@@ -85,7 +85,7 @@ public class DAOResult implements DAOInterface<Result> {
             sqlPrepare.setInt(1,result.getScore());
             sqlPrepare.setInt(2,result.getTrainee());
             sqlPrepare.setString(3,result.getJson());
-            sqlPrepare.executeQuery();
+            sqlPrepare.executeUpdate();
             conn.close();
         } catch (SQLException se) {
             se.printStackTrace();

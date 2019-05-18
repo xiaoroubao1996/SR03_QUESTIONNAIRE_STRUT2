@@ -1,5 +1,5 @@
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhuchenyan
@@ -30,30 +30,30 @@
             Score
         </td>
     </tr>
-    <c:forEach var="result" items="${resultList}">
+    <s:iterator value="resultList">
         <% %>
         <tr>
             <td>
-                <c:out value="${result.getId()}"/>
+                <s:property value="id" />
             </td>
             <td>
-                <c:out value="${result.getTrainee()}"/>
+                <s:property value="trainee" />
             </td>
             <td>
-                <c:out value="${result.getDateCreation()}"/>
+                <s:property value="dateCreation" />
             </td>
             <td>
-                <c:out value="${result.getScore()}"/>
+                <s:property value="score" />
             </td>
             <td>
-                <form action="/resultDetail" method="post">
-                    <input type="hidden" name="resultId" value="${result.getId()}"/>
+                <form action="resultDetail" method="post">
+                    <input type="hidden" name="resultId" value="${id}"/>
                     <input type="submit" value="Detail"/>
                 </form>
             </td>
 
         </tr>
-    </c:forEach>
+    </s:iterator>
 </table>
 
 <form action="/index">

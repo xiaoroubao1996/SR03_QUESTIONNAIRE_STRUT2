@@ -89,8 +89,14 @@
                 class="Action.DisplayQuestionnaireAction"
                 method="execute">
             <result name="success">/WEB-INF/pages/questionnaire.jsp</result>
+            <result name="finish">/WEB-INF/pages/result.jsp</result>
         </action>
 
+        <action name="resultList"
+                class="Action.DisplayResultListAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/resultList.jsp</result>
+        </action>
         <!--action done-->
     </package>
 

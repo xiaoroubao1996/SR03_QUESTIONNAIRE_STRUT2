@@ -2,12 +2,14 @@ package Action;
 
 import Helper.SortHelper;
 import Model.*;
+import com.opensymphony.xwork2.ActionContext;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class DisplayQuestionnaireAction {
     //input data
@@ -23,8 +25,11 @@ public class DisplayQuestionnaireAction {
     String answerText3;
     String answerText4;
 
+
+    //output result page
     boolean lastQuestion;
-    double score;
+    Integer score;
+    String subject;
 
 
     //transfer data
@@ -33,22 +38,22 @@ public class DisplayQuestionnaireAction {
 
 
     public String execute() {
-        lastQuestion=false;
+        lastQuestion = false;
         if (index == 0) {
             //first question
-            json=generateJson();
+            json = generateJson();
         } else {
-            json = new JSONObject( StringEscapeUtils.unescapeJson(jsonString));
+            json = new JSONObject(StringEscapeUtils.unescapeJson(jsonString));
             saveChoice();
         }
 
 
-
         if (index == (json.getJSONArray("question").length())) {
             //last question
-            lastQuestion=true;
+            lastQuestion = true;
             calculateResult();
-            jsonString = json.toString();
+            writeResultIntoDB();
+            subject=json.getJSONObject("questionnaire").getString("subject");
             return "finish";
         } else {
             getQuestion(index);
@@ -58,24 +63,34 @@ public class DisplayQuestionnaireAction {
         }
     }
 
+    private void writeResultIntoDB() {
+        DAOFactory.getDAOResult().add(
+                new Result(
+                        score,
+                        (Integer) (ActionContext.getContext().getSession().get("id")),
+                        json.toString()
+                )
+        );
+    }
+
     private void calculateResult() {
         JSONArray questions = json.getJSONArray("question");
         int rightQuestion = 0;
         int totalQuestion = questions.length();
         for (int i = 0; i < totalQuestion; i++) {
             String choice = questions.getJSONObject(i).getString("choice");
-            if(choice!=null) {
+            if (choice != null) {
                 if (questions.getJSONObject(i).getJSONArray("answer").getJSONObject(Integer.valueOf(choice)).getBoolean("correction") == true) {
                     rightQuestion++;
                 }
             }
         }
-        score=rightQuestion/totalQuestion;
+        score = 100*rightQuestion / totalQuestion;
     }
 
     private void saveChoice() {
         JSONArray questions = json.getJSONArray("question");
-        JSONObject currentQuestion = questions.getJSONObject(index-1);
+        JSONObject currentQuestion = questions.getJSONObject(index - 1);
         currentQuestion.put("choice", choice);
     }
 
@@ -231,12 +246,19 @@ public class DisplayQuestionnaireAction {
         this.lastQuestion = lastQuestion;
     }
 
-    public double getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 }
