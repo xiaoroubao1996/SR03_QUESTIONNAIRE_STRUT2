@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhuchenyan
@@ -14,6 +15,7 @@
 </head>
 <body>
 <div>Login</div>
+
 <form action="login" method="post">
     <label>Email</label>
     <input type="email" id="email" name="email"/>
@@ -23,5 +25,7 @@
     <br>
     <input type="submit" value="Login">
 </form>
+
+
 </body>
 </html>

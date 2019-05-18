@@ -11,7 +11,7 @@
     <title>Index</title>
 </head>
 <body>
-<>
+
 <form action="/questionnaireList" method="post">
     <input type="submit" value="Questionnaire list"/>
 </form>
@@ -20,6 +20,8 @@
 </form>
 
 <%
+    System.out.println(session.getAttribute("type"));
+    System.out.println(session.getAttribute("type"));
     if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
 %>
 

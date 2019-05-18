@@ -5,12 +5,28 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+
+
+
+
     <constant name="struts.devMode" value="true"/>
     <package name="Action" extends="struts-default">
+        <!--interceptor-->
+
+        <interceptors>
+            <interceptor name="loginInterceptor"
+                         class="Interceptor.LoginInterceptor" >
+            </interceptor>
+        </interceptors>
+
+        <!--interceptor done-->
+
+        <!--action-->
 
         <action name="login"
                 class="Action.LoginAction"
                 method="execute">
+            <interceptor-ref name="loginInterceptor" />
             <result name="success">/WEB-INF/pages/index.jsp</result>
             <result name="failure">/WEB-INF/pages/error.jsp</result>
         </action>
@@ -21,10 +37,15 @@
             <result name="success">/HelloWorld.jsp</result>
         </action>
 
-        <action name="displayQuestionnaireList"
-                class="Action.displayQuestionnaireListAction"
-                method="execute">
-            <result name="success">/WEB-INF/pages/questionnaireList.jsp</result>
-        </action>
+        <!--<action name="displayQuestionnaireList"-->
+                <!--class="Action.displayQuestionnaireListAction"-->
+                <!--method="execute">-->
+            <!--<result name="success">/WEB-INF/pages/questionnaireList.jsp</result>-->
+        <!--</action>-->
+
+        <!--action done-->
     </package>
+
+
+
 </struts>
