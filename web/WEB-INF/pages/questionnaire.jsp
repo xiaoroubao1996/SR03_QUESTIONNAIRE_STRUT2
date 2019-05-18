@@ -1,6 +1,7 @@
 <%@ page import="Model.Constant" %>
 <%@ page import="org.json.JSONObject" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhuchenyan
@@ -10,105 +11,57 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<%--<jsp:useBean id="questionnaire" class="Model.Questionnaire" scope="session"></jsp:useBean>--%>
-<%
-    JSONObject Json = new JSONObject(request.getAttribute("json").toString());
-%>
 <head>
     <title>
-        <%= Json.getJSONObject("questionnaire").getString("subject") %>
-        <%--<jsp:getProperty name="questionnaire" property="subject"/>--%>
+        Questionnaire
     </title>
 </head>
 <body>
-<div>
-    <%= Json.getJSONObject("questionnaire").getString("subject") %>
-</div>
 <%
     if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
 %>
 <form action="/createQuestion" method="post">
     <label> Create New Question </label>
-    <input type="hidden" name="questionnaireId" value="<%=Json.getJSONObject("questionnaire").getInt("id")%>"/>
+    <input type="submit" value="Create">
+</form>
+<form action="/modifyQuestion" method="post">
+    <label> Create New Question </label>
     <input type="submit" value="Create">
 </form>
 <%
     }
 %>
 
-<div>Question List</div>
+<form action="displayQuestionnaire" method="post">
+    <s:property value="questionText"/>
+    <br>
+    <input type="radio" id="choice1" name="choice" value="0">
+    <label for="choice1"><s:property value="answerText1"/></label>
 
-<form action="/commit" method="post">
-    <table>
-        <tr>
-            <td>
-                Questionn Id
-            </td>
-            <td>
-                Subject
-            </td>
-            <td>
-                Answers
-            </td>
-            <%
-                if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
-            %>
-            <td>
-                Status
-            </td>
-            <%
-                }
-            %>
-        </tr>
-        <%
-            for (int indexQuestion = 0; indexQuestion < Json.getJSONArray("question").length(); indexQuestion++) {
-                JSONObject question=Json.getJSONArray("question").getJSONObject(indexQuestion);
-        %>
-        <tr>
-            <td>
-                <%=question.getInt("id")%>
-            </td>
-            <td>
-                <%=question.getString("text")%>
-            </td>
+    <br>
+    <input type="radio" id="choice2" name="choice" value="1">
+    <label for="choice2"><s:property value="answerText2"/></label>
 
-            <td>
-                <%
-                    for (int indexAnswer = 0; indexAnswer < question.getJSONArray("answer").length(); indexAnswer++) {
-                        JSONObject answer=question.getJSONArray("answer").getJSONObject(indexAnswer);
-                %>
-                    <input type="radio" id="<%=answer.getInt("id")%>" name="<%=question.getInt("id")%>"
-                           value="<%=answer.getInt("id")%>">
-                    <label for="<%=answer.getInt("id")%>"><%=answer.getString("text")%></label>
-                <%
-                    }
-                %>
-            </td>
+    <br>
+    <input type="radio" id="choice3" name="choice" value="2">
+    <label for="choice3"><s:property value="answerText3"/></label>
 
-            <%
-                if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
-            %>
-            <td>
-                <%=question.getString("status")%>
-            </td>
-            <%
-                }
-            %>
-            <td>
-                <form action="/question" method="post">
-                    <input type="hidden" name="questionnaireId"
-                           value="<%=question.getInt("id")%>>"/>
-                    <input type="submit" value="Modify"/>
-                </form>
-            </td>
-        </tr>
-        <% } %>
-    </table>
-    <input type="hidden" value="<%=request.getAttribute("json").toString()%>">
-    <input type="submit" value="Commit"/>
+    <br>
+    <input type="radio" id="choice4" name="choice" value="3">
+    <label for="choice4"><s:property value="answerText4"/></label>
+
+
+    <input type="hidden" name="jsonString" value="<s:property value="jsonString"/>"/>
+    <input type="hidden" name="index" value="<s:property value="index"/>"/>
+
+    <br>
+
+
+    <input type="submit" value="Next"/>
+
 </form>
 <form action="/index" method="post">
-    <input type="submit" value="Return"/>
+    <input type="submit" value="Abandon"/>
 </form>
 </body>
 </html>

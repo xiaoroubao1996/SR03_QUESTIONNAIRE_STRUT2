@@ -59,11 +59,18 @@
             <result name="success">/HelloWorld.jsp</result>
         </action>
 
-        <!--<action name="displayQuestionnaireList"-->
-                <!--class="Action.displayQuestionnaireListAction"-->
-                <!--method="execute">-->
-            <!--<result name="success">/WEB-INF/pages/questionnaireList.jsp</result>-->
-        <!--</action>-->
+        <action name="displayQuestionnaireList"
+                class="Action.DisplayQuestionnaireListAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/questionnaireList.jsp</result>
+        </action>
+
+
+        <action name="displayQuestionnaire"
+                class="Action.DisplayQuestionnaireAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/questionnaire.jsp</result>
+        </action>
 
         <!--action done-->
     </package>
