@@ -23,7 +23,7 @@ public class DAOQuestionnaire implements DAOInterface<Questionnaire> {
             result = sqlPrepare.executeQuery();
             if (result.next()) {
                 questionnaire = new Questionnaire(
-                        Integer.valueOf(result.getString("id")),
+                        result.getInt("id"),
                         result.getString("subject"),
                         Constant.STATUS.valueOf(result.getString("status"))
                 );
@@ -53,7 +53,7 @@ public class DAOQuestionnaire implements DAOInterface<Questionnaire> {
             result = sqlPrepare.executeQuery();
             while (result.next()) {
                 Questionnaire questionnaire = new Questionnaire(
-                        Integer.valueOf(result.getString("id")),
+                        result.getInt("id"),
                         result.getString("subject"),
                         Constant.STATUS.valueOf(result.getString("status"))
                 );
