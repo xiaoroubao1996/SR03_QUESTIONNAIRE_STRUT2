@@ -2,14 +2,16 @@ package Action;
 
 import Helper.AccountHelper;
 import Model.User;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class LoginAction extends ActionSupport {
 
     //    private User user;
     private String email;
     private String password;
-    public LoginAction() {
-    }
 
 //
 //    public User getUser() {
@@ -44,4 +46,13 @@ public class LoginAction {
         }
     }
 
+    public void validate()
+    {
+        if (email.equals("")){
+            addFieldError("email","The email is required");
+        }
+        if (password.equals("")){
+            addFieldError("password","The password is required");
+        }
+    }
 }
