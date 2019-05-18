@@ -60,17 +60,22 @@
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 
-        <action name="editUser"
-                class="Action.EditUserAction"
+        <action name="showEditUser"
+                class="Action.ShowEditUserAction"
                 method="execute">
             <interceptor-ref name="isAdminStack" />
             <result name="success">/WEB-INF/pages/editUser.jsp</result>
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 
-        <action name="editUser1">
-            <result>/WEB-INF/pages/editUser.jsp</result>
+        <action name="editUser"
+                class="Action.EditUserAction"
+                method="execute">
+            <interceptor-ref name="isAdminStack" />
+            <result name="success">/WEB-INF/pages/userList.jsp</result>
+            <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
+
 
         <action name="hello"
                 class="Action.HelloWorldAction"

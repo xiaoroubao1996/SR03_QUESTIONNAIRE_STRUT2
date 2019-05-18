@@ -7,8 +7,16 @@ import java.util.ArrayList;
 
 public class EditUserAction {
     private User user;
-    private String userId;
 
+    private ArrayList<User> userList;
+
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(ArrayList<User> userList) {
+        this.userList = userList;
+    }
 
     public User getUser() {
         return user;
@@ -18,16 +26,9 @@ public class EditUserAction {
         this.user = user;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public String execute() throws Exception {
-        user = DAOFactory.getDAOUser().selectByID(Integer.parseInt(userId));
+        DAOFactory.getDAOUser().update(user);
+        userList = DAOFactory.getDAOUser().selectAll();
         return "success";
     }
 }
