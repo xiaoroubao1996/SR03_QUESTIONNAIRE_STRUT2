@@ -1,8 +1,9 @@
 package Action;
 
 import Helper.AccountHelper;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction {
+public class LoginAction extends ActionSupport {
 
     private String email;
     private String password;
@@ -31,7 +32,7 @@ public class LoginAction {
             return "failure";
         }
     }
-
+//
 //    public void validate()
 //    {
 //        if (email.equals("")){

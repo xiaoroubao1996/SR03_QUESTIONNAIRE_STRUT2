@@ -12,7 +12,7 @@
 </head>
 <body>
 <div>Error</div>
-<form action="index">
+<form action="loginError">
     <input type="submit" value="Return" />
 </form>
 </body>

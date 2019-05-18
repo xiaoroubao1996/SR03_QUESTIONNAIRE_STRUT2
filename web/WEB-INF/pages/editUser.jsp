@@ -36,36 +36,19 @@
     <label> Telephone </label>
     <input type="number" id="tel" name="User telephone" value="<s:property value="user.telephone"/>"/>
     <br>
-    <%
-        String admin, trainee;
-        if(user.getType() == Constant.USERTYPE.ADMIN){
-            admin = "Checked";
-            trainee = null;
-        }else{
-            admin = null;
-            trainee = "Checked";
-        }
-    %>
-    <input type="radio" id="typeChoice1" name="User type" value="ADMIN" <%= admin %>>
+
+    <s:set name="user" value="user"/>
+    <input type="radio" id="typeChoice1" name="User type" value="ADMIN" <s:if test="%{#user.type == @Model.Constant$USERTYPE@ADMIN}">Checked</s:if>>
     <label for="typeChoice1">Administrator</label>
 
-    <input type="radio" id="typeChoice2" name="User type" value="TRAINEE"<%= trainee %>>
+    <input type="radio" id="typeChoice2" name="User type" value="TRAINEE" <s:if test="%{#user.type == @Model.Constant$USERTYPE@TRAINNEE}">Checked</s:if>>
     <label for="typeChoice2">Trainee</label>
     </br>
-    <%
-        String active, inactive;
-        if(user.getStatus() == Constant.STATUS.ACTIVE){
-            active = "Checked";
-            inactive = null;
-        }else{
-            active = null;
-            inactive = "Checked";
-        }
-    %>
-    <input type="radio" id="activeChoice1" name="User status" value="ACTIVE" <%= active %>>
+
+    <input type="radio" id="activeChoice1" name="User status" value="ACTIVE" <s:if test="%{#user.status == @Model.Constant$STATUS@ACTIVE}">Checked</s:if>>
     <label for="activeChoice1">Active</label>
 
-    <input type="radio" id="typeChoice2" name="User status" value="INACTIVE"<%= inactive %>>
+    <input type="radio" id="activeChoice2" name="User status" value="INACTIVE"<s:if test="%{#user.status == @Model.Constant$STATUS@INACTIVE}">Checked</s:if>>
     <label for="typeChoice2">Inactive</label>
 
     <br>

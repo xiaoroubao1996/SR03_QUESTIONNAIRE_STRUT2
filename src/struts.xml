@@ -17,9 +17,19 @@
             <interceptor name="loginInterceptor"
                          class="Interceptor.LoginInterceptor" >
             </interceptor>
-            <interceptor name="IsAdminInterceptor"
+            <interceptor name="isAdminInterceptor"
                          class="Interceptor.IsAdminInterceptor" >
             </interceptor>
+
+
+            <interceptor-stack name="loginStack">
+                <interceptor-ref name="loginInterceptor"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+            <interceptor-stack name="isAdminStack">
+                <interceptor-ref name="isAdminInterceptor"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
         </interceptors>
 
         <!--interceptor done-->
@@ -30,31 +40,35 @@
             <result>/WEB-INF/pages/index.jsp</result>
         </action>
 
+        <action name="loginError">
+            <result>/WEB-INF/pages/login.jsp</result>
+        </action>
+
         <action name="login"
                 class="Action.LoginAction"
                 method="execute">
-            <interceptor-ref name="loginInterceptor" />
+            <interceptor-ref name="loginStack" />
             <result name="success">/WEB-INF/pages/index.jsp</result>
-            <result name="authorizationFailure">/WEB-INF/pages/error.jsp</result>
+            <result name="failure">/WEB-INF/pages/error.jsp</result>
         </action>
 
         <action name="userList"
                 class="Action.UserListAction"
                 method="execute">
-            <interceptor-ref name="IsAdminInterceptor" />
+            <interceptor-ref name="isAdminStack" />
             <result name="success">/WEB-INF/pages/userList.jsp</result>
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 
-        <action name="editUser1"
+        <action name="editUser"
                 class="Action.EditUserAction"
                 method="execute">
-            <interceptor-ref name="IsAdminInterceptor" />
+            <interceptor-ref name="isAdminStack" />
             <result name="success">/WEB-INF/pages/editUser.jsp</result>
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 
-        <action name="editUser">
+        <action name="editUser1">
             <result>/WEB-INF/pages/editUser.jsp</result>
         </action>
 

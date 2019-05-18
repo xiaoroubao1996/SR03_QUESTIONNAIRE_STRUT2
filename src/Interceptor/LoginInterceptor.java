@@ -18,21 +18,27 @@ public class LoginInterceptor extends AbstractInterceptor {
         HttpSession session = ServletActionContext.getRequest().getSession();
         String email = ((String[]) invocation.getInvocationContext().getParameters().get("email"))[0];
         String password = ((String[]) invocation.getInvocationContext().getParameters().get("password"))[0];
-
         LoginAction loginAction = (LoginAction) invocation.getAction();
-        loginAction.setEmail(email);
-        loginAction.setPassword(password);
-//        loginAction.validate();
-        if (AccountHelper.isAuthentic(email, password)) {
-            User user = AccountHelper.getUserInformationByEmail(email);
-            if (user.getPassword().equals(password)) {
-                session.setAttribute("id", user.getId());
-                session.setAttribute("email", user.getEmail());
-                session.setAttribute("firstName", user.getFirstName());
-                session.setAttribute("lastName", user.getLastName());
-                session.setAttribute("type", user.getType());
+//        loginAction.setEmail(email);
+//        loginAction.setPassword(password);
+////        loginAction.validate();
+        try{
+            if (AccountHelper.isAuthentic(email, password)) {
+                User user = AccountHelper.getUserInformationByEmail(email);
+                if (user.getPassword().equals(password)) {
+                    session.setAttribute("id", user.getId());
+                    session.setAttribute("email", user.getEmail());
+                    session.setAttribute("firstName", user.getFirstName());
+                    session.setAttribute("lastName", user.getLastName());
+                    session.setAttribute("type", user.getType());
+                }
             }
+        }catch(Exception e){
+            return "failure";
         }
+
         return invocation.invoke();
     }
+
+
 }
