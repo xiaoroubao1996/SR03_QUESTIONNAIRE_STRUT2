@@ -1,4 +1,3 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import="Model.Constant" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -18,23 +17,23 @@
 <div>Edit User</div>
 <form action="/action/editUser" method="post">
     <label> First name </label>
-    <input type="hidden" id="id" name="User id" value="<s:property value="user.id"/>"/>
-    <input type="text" id="frname" name="User first name" value="<s:property value="user.firstName"/>"/>
+    <input type="hidden" id="id" name="User id" value="<jsp:getProperty name="user" property="id"/>"/>
+    <input type="text" id="frname" name="User first name" value="<jsp:getProperty name="user" property="firstName"/>"/>
     <br>
     <label> Last name </label>
-    <input type="text" id="laname" name="User last name" value="<s:property value="user.lastName"/>"/>
+    <input type="text" id="laname" name="User last name" value="<jsp:getProperty name="user" property="lastName"/>"/>
     <br>
     <label>Email</label>
-    <input type="email" id="email" name="User email" value="<s:property value="user.email"/>"/>
+    <input type="email" id="email" name="User email" value="<jsp:getProperty name="user" property="email"/>"/>
     <br>
     <label> Password </label>
-    <input type="password" id="psw" name="User password" value="<s:property value="user.password"/>"/>
+    <input type="password" id="psw" name="User password" value="<jsp:getProperty name="user" property="password"/>"/>
     <br>
     <label> Company </label>
-    <input type="text" id="cp" name="User company" value="<s:property value="user.company"/>"/>
+    <input type="text" id="cp" name="User company" value="<jsp:getProperty name="user" property="company"/>"/>
     <br>
     <label> Telephone </label>
-    <input type="number" id="tel" name="User telephone" value="<s:property value="user.telephone"/>"/>
+    <input type="number" id="tel" name="User telephone" value="<jsp:getProperty name="user" property="telephone"/>"/>
     <br>
     <%
         String admin, trainee;

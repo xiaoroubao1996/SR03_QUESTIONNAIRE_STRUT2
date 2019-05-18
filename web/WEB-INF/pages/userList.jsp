@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Model.User" %>
 <%@ page import="java.util.Iterator" %>
@@ -28,29 +29,32 @@
     </tr>
 
     <%
-    List<User> list = (List)request.getAttribute("userList");
-    Iterator<User> it = list.iterator();
-    while(it.hasNext()){
-        User user = it.next();
+//    List<User> list = (List)request.getAttribute("userList");
+
+//    Iterator<User> it = list.iterator();
+//    while(it.hasNext()){
+//        User user = it.next();
         %>
+<s:iterator value="userList" >
         <tr>
-            <td><%= user.getId() %></td>
-            <td><%= user.getEmail() %></td>
-            <td><%= user.getFirstName() %></td>
-            <td><%= user.getLastName() %></td>
-            <td><%= user.getCompany() %></td>
-            <td><%= user.getTelephone() %></td>
-            <td><%= user.getStatus() %></td>
-            <td><%= user.getType() %></td>
+            <td><s:property value="id" /></td>
+            <td><s:property value="email" /></td>
+            <td><s:property value="firstName" /></td>
+            <td><s:property value="lastName" /></td>
+            <td><s:property value="company" /></td>
+            <td><s:property value="telephone" /></td>
+            <td><s:property value="status" /></td>
+            <td><s:property value="type" /></td>
             <td>
                 <form action="editUser" method="get">
-                    <input type="hidden" name="userId" value="<%= user.getId()%>">
+                    <input type="hidden" name="userId" value="<s:property value="id" />">
                     <input type="submit" value="Edit"/>
                 </form>
             </td>
         </tr>
-        <%
-    }
-%>
+    </s:iterator>
+        <%--<%--%>
+    <%--}--%>
+<%--%>--%>
 </body>
 </html>
