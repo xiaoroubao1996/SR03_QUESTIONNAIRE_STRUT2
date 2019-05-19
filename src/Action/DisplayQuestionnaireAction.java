@@ -42,6 +42,10 @@ public class DisplayQuestionnaireAction {
         if (index == 0) {
             //first question
             json = generateJson();
+            if ((json.getJSONArray("question").length() == 0) &&
+                    ((ActionContext.getContext().getSession().get("type")) == Constant.USERTYPE.ADMIN)) {
+                return "new";
+            }
         } else {
             json = new JSONObject(StringEscapeUtils.unescapeJson(jsonString));
             saveChoice();
@@ -53,7 +57,7 @@ public class DisplayQuestionnaireAction {
             lastQuestion = true;
             calculateResult();
             writeResultIntoDB();
-            subject=json.getJSONObject("questionnaire").getString("subject");
+            subject = json.getJSONObject("questionnaire").getString("subject");
             return "finish";
         } else {
             getQuestion(index);
@@ -85,7 +89,11 @@ public class DisplayQuestionnaireAction {
                 }
             }
         }
-        score = 100*rightQuestion / totalQuestion;
+        if (totalQuestion != 0) {
+            score = 100 * rightQuestion / totalQuestion;
+        } else {
+            score = 0;
+        }
     }
 
     private void saveChoice() {

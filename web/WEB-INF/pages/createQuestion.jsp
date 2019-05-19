@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -12,33 +13,35 @@
 </head>
 <body>
 <div>Create Question</div>
-<form action="/action/createQuestion" method="post">
+<form action="createQuestion" method="post">
     <label> Subject </label>
-    <input type="text" id="subject" name="Question subject"/>
+    <input type="text" name="questionText"/>
     <br>
     <label> Answer1 </label>
-    <input type="text" id="Answer1" name="Answer1"/>
+    <input type="text" name="answer1"/>
     <br>
     <label> Answer2 </label>
-    <input type="text" id="Answer2" name="Answer2"/>
+    <input type="text" name="answer2"/>
     <br>
     <label> Answer3 </label>
-    <input type="text" id="Answer3" name="Answer3"/>
+    <input type="text" name="answer3"/>
     <br>
     <label> Answer4 </label>
-    <input type="text" id="Answer4" name="Answer4"/>
+    <input type="text" name="answer4"/>
     <br>
     <label> Which answer is correct?</label>
-    <select id="Correction" name="Correction">
-        <option value ="AnswerCorrection1">Answer1</option>
-        <option value ="AnswerCorrection2">Answer2</option>
-        <option value ="AnswerCorrection3">Answer3</option>
-        <option value ="AnswerCorrection4">Answer4</option>
+    <select name="correction">
+        <option value="0">Answer1</option>
+        <option value="1">Answer2</option>
+        <option value="2">Answer3</option>
+        <option value="3">Answer4</option>
     </select>
     <br>
-    <label>Questionnaire</label>
-    <input type="text" id="questionnaireId" name="questionnaireId" value="<%= request.getParameter("questionnaireId") %>">
+    <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
     <input type="submit" value="Submit">
+</form>
+<form action="index">
+    <input type="submit" value="Return"/>
 </form>
 </body>
 </html>

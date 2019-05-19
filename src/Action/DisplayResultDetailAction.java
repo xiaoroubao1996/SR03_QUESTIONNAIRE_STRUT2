@@ -22,41 +22,43 @@ public class DisplayResultDetailAction {
     boolean lastQuestion;
 
     public String execute() {
+        try {
+            JSONObject json = new JSONObject(DAOFactory.getDAOResult().selectByID(resultId).getJson());
+            JSONArray questions = json.getJSONArray("question");
+            JSONObject question = questions.getJSONObject(index);
 
-        JSONObject json = new JSONObject(DAOFactory.getDAOResult().selectByID(resultId).getJson());
-        JSONArray questions = json.optJSONArray("question");
-        JSONObject question = questions.getJSONObject(index);
+            questionText = question.getString("text");
+            choice = question.getInt("choice");
 
-        questionText = question.getString("text");
-        choice = question.getInt("choice");
+            JSONArray answers = question.getJSONArray("answer");
+            setAnswerText1(answers.getJSONObject(0).getString("text"));
+            setAnswerText2(answers.getJSONObject(1).getString("text"));
+            setAnswerText3(answers.getJSONObject(2).getString("text"));
+            setAnswerText4(answers.getJSONObject(3).getString("text"));
 
-        JSONArray answers = question.getJSONArray("answer");
-        setAnswerText1(answers.getJSONObject(0).getString("text"));
-        setAnswerText2(answers.getJSONObject(1).getString("text"));
-        setAnswerText3(answers.getJSONObject(2).getString("text"));
-        setAnswerText4(answers.getJSONObject(3).getString("text"));
+            if (answers.getJSONObject(0).getBoolean("correction") == true) {
+                correction = 0;
+            }
+            if (answers.getJSONObject(1).getBoolean("correction") == true) {
+                correction = 1;
+            }
+            if (answers.getJSONObject(2).getBoolean("correction") == true) {
+                correction = 2;
+            }
+            if (answers.getJSONObject(3).getBoolean("correction") == true) {
+                correction = 3;
+            }
 
-        if (answers.getJSONObject(0).getBoolean("correction") == true) {
-            correction = 0;
+            lastQuestion = false;
+            index++;
+
+            if (index == (json.getJSONArray("question").length())) {
+                lastQuestion = true;
+            }
+            return "success";
+        }catch(Exception e){
+            return "error";
         }
-        if (answers.getJSONObject(1).getBoolean("correction") == true) {
-            correction = 1;
-        }
-        if (answers.getJSONObject(2).getBoolean("correction") == true) {
-            correction = 2;
-        }
-        if (answers.getJSONObject(3).getBoolean("correction") == true) {
-            correction = 3;
-        }
-
-        lastQuestion=false;
-        index++;
-
-        if (index == (json.getJSONArray("question").length())) {
-            lastQuestion=true;
-        }
-        return "success";
-
 
     }
 

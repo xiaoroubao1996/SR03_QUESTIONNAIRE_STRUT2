@@ -18,7 +18,7 @@
 <%
     if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
 %>
-<form action="/createquestionnaire" method="post">
+<form action="createQuestionnairePage" method="post">
     <label> Create Questionnaire </label>
     <input type="submit" value="Create">
 </form>

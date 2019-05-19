@@ -38,6 +38,36 @@ public class DAOQuestionnaire implements DAOInterface<Questionnaire> {
         return questionnaire;
     }
 
+    public Questionnaire selectBySubject(String subject) {
+        ResultSet result;
+        Connection conn = null;
+        PreparedStatement sqlPrepare;
+        Questionnaire questionnaire = null;
+        try {
+            conn = SQL.getSQLConnection();
+
+            String sql;
+            sql = "SELECT * FROM questionnaire WHERE subject = ?";
+            sqlPrepare = conn.prepareStatement(sql);
+            sqlPrepare.setString(1, subject);
+            result = sqlPrepare.executeQuery();
+            if (result.next()) {
+                questionnaire = new Questionnaire(
+                        result.getInt("id"),
+                        result.getString("subject"),
+                        Constant.STATUS.valueOf(result.getString("status"))
+                );
+            }
+
+            conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return questionnaire;
+    }
+
     @Override
     public ArrayList<Questionnaire> selectAll() {
         ResultSet result;

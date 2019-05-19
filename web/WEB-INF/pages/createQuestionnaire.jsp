@@ -8,22 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>TODO supply a title</title>
+    <title>Create questionnaire</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<form action="/action/createquestionnaire" method="post">
+<form action="createQuestionnaire" method="post">
     <label> Subject Of Questionnaire </label>
-    <input type="text" id="subject" name="Questionnaire subject"/>
+    <input type="text" name="subject"/>
     <br>
     <input type="submit" value="Submit">
 </form>
 
-<div>Create Question</div>
-<form action="/createQuestion" method="post">
-    <input type="text" id="Questionnaire" name="Questionnaire" value=""/>
-    <input type="submit" value="CreateQuestion" />
+<form action="index">
+    <input type="submit" value="Return"/>
 </form>
+
+
 </body>
 </html>

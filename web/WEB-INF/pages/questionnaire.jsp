@@ -20,12 +20,13 @@
 <%
     if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
 %>
-<form action="/createQuestion" method="post">
+<form action="createQuestionPage" method="post">
     <label> Create New Question </label>
+    <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
     <input type="submit" value="Create">
 </form>
 <form action="/modifyQuestion" method="post">
-    <label> Create New Question </label>
+    <label> Modify Question </label>
     <input type="submit" value="Create">
 </form>
 <%
@@ -54,6 +55,7 @@
 
     <input type="hidden" name="jsonString" value="<s:property value="jsonString"/>"/>
     <input type="hidden" name="index" value="<s:property value="index"/>"/>
+    <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
 
     <br>
 
