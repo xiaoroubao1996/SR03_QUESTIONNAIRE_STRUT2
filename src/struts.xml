@@ -44,12 +44,34 @@
             <result>/WEB-INF/pages/login.jsp</result>
         </action>
 
+        <!--User Management-->
         <action name="login"
                 class="Action.LoginAction"
                 method="execute">
             <interceptor-ref name="loginStack" />
             <result name="success">/WEB-INF/pages/index.jsp</result>
             <result name="failure">/WEB-INF/pages/error.jsp</result>
+        </action>
+
+        <action name="userManagement">
+            <interceptor-ref name="isAdminStack" />
+            <result>/WEB-INF/pages/userManagement.jsp</result>
+            <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
+        </action>
+
+        <action name="displayCreateUser">
+            <interceptor-ref name="isAdminStack" />
+            <result>/WEB-INF/pages/createUser.jsp</result>
+            <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
+        </action>
+
+        <action name="createUser"
+                class="Action.CreateUserAction"
+                method="execute">
+            <interceptor-ref name="isAdminStack" />
+            <result name="success">/WEB-INF/pages/userManagement.jsp</result>
+            <result name="failure">/WEB-INF/pages/userManagement.jsp</result>
+            <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 
         <action name="userList"
@@ -75,14 +97,9 @@
             <result name="success">/WEB-INF/pages/userList.jsp</result>
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
+        <!--User Management Done-->
 
-
-        <action name="hello"
-                class="Action.HelloWorldAction"
-                method="execute">
-            <result name="success">/HelloWorld.jsp</result>
-        </action>
-
+        <!--Questionnaire Management-->
         <action name="displayQuestionnaireList"
                 class="Action.DisplayQuestionnaireListAction"
                 method="execute">

@@ -14,35 +14,35 @@
 </head>
 <body>
 <div>Create User</div>
-<form action="/action/createUser" method="post">
+<form action="createUser" method="post">
     <label> First name </label>
-    <input type="text" id="frname" name="User first name"/>
+    <input type="text" id="frname" name="user.firstName"/>
     <br>
     <label> Last name </label>
-    <input type="text" id="laname" name="User last name"/>
+    <input type="text" id="laname" name="user.lastName"/>
     <br>
     <label>Email</label>
-    <input type="email" id="email" name="User email"/>
+    <input type="email" id="email" name="user.email"/>
     <br>
     <label> Password </label>
-    <input type="password" id="psw" name="User password"/>
+    <input type="password" id="psw" name="user.password"/>
     <br>
     <label> Company </label>
-    <input type="text" id="cp" name="User company"/>
+    <input type="text" id="cp" name="user.company"/>
     <br>
     <label> Telephone </label>
-    <input type="number" id="tel" name="User telephone"/>
+    <input type="number" id="tel" name="user.telephone"/>
     <br>
-    <input type="radio" id="typeChoice1" name="User type" value="ADMIN">
+    <input type="radio" id="typeChoice1" name="user.type" value="ADMIN">
     <label for="typeChoice1">Administrator</label>
 
-    <input type="radio" id="typeChoice2" name="User type" value="TRAINEE">
+    <input type="radio" id="typeChoice2" name="user.type" value="TRAINEE">
     <label for="typeChoice2">Trainee</label>
 
     <br>
     <input type="submit" value="Submit">
 </form>
-<form action="/index">
+<form action="index">
     <input type="submit" value="Return"/>
 </form>
 </body>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhuchenyan
@@ -11,7 +12,7 @@
     <title>Error</title>
 </head>
 <body>
-<div>Error</div>
+<div><s:if test="%{#error != null}"><s:property value="error"/></s:if><s:else>error</s:else></div>
 <form action="loginError">
     <input type="submit" value="Return" />
 </form>

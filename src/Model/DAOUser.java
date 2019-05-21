@@ -136,10 +136,9 @@ public class DAOUser implements DAOInterface<User> {
 
             
             conn.close();
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } catch (Exception e) {
+        }  catch (Exception e) {
             e.printStackTrace();
+            throw e;
         }
     }
 
