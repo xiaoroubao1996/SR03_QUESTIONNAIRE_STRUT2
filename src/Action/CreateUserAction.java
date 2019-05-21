@@ -3,6 +3,7 @@ package Action;
 import Model.DAOFactory;
 import Model.User;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CreateUserAction {
@@ -29,10 +30,10 @@ public class CreateUserAction {
     public String execute() throws Exception {
         try{
             DAOFactory.getDAOUser().add(user);
-        }catch (Exception e) {
+        }catch (SQLException se) {
             error = "Failure of Creation User";
             return "failure";
-        }
+            }
 
         return "success";
     }

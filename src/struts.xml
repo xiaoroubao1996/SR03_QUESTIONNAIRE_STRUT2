@@ -70,7 +70,7 @@
                 method="execute">
             <interceptor-ref name="isAdminStack" />
             <result name="success">/WEB-INF/pages/userManagement.jsp</result>
-            <result name="failure">/WEB-INF/pages/userManagement.jsp</result>
+            <result name="failure">/WEB-INF/pages/error.jsp</result>
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 

@@ -38,7 +38,11 @@ public class CreateUser extends HttpServlet {
                     req.getParameter("User type")
             );
             DAOUser daoUser = new DAOUser();
-            daoUser.add(newUser);
+            try {
+                daoUser.add(newUser);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
 //            //return previous page
 //            String referer = req.getHeader("Referer");

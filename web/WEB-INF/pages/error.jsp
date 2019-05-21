@@ -12,7 +12,7 @@
     <title>Error</title>
 </head>
 <body>
-<div><s:if test="%{#error != null}"><s:property value="error"/></s:if><s:else>error</s:else></div>
+<div><s:if test="%{error != null}"><s:property value="error"/></s:if><s:else>error</s:else></div>
 <form action="loginError">
     <input type="submit" value="Return" />
 </form>

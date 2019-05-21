@@ -115,7 +115,7 @@ public class DAOUser implements DAOInterface<User> {
     }
 
     @Override
-    public void add(User user) {
+    public void add(User user) throws SQLException {
         Connection conn = null;
         PreparedStatement sqlPrepare;
         try {
@@ -136,9 +136,11 @@ public class DAOUser implements DAOInterface<User> {
 
             
             conn.close();
-        }  catch (Exception e) {
+        }  catch (SQLException se) {
+//            se.printStackTrace();
+            throw se;
+        } catch (Exception e) {
             e.printStackTrace();
-            throw e;
         }
     }
 
