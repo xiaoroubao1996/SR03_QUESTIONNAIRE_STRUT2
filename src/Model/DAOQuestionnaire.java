@@ -128,7 +128,7 @@ public class DAOQuestionnaire implements DAOInterface<Questionnaire> {
             conn = SQL.getSQLConnection();
 
             String sql;
-            sql = "UPDATE `questionnaire` SET `subject`=?,status`=? WHERE `id`=?";
+            sql = "UPDATE questionnaire SET subject=?,status=? WHERE id=?";
             sqlPrepare = conn.prepareStatement(sql);
             sqlPrepare.setString(1, questionnaire.getSubject());
             sqlPrepare.setString(2, questionnaire.getStatus().toString());

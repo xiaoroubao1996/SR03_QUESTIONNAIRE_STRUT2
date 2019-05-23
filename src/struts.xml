@@ -141,6 +141,20 @@
             <result name="error">/WEB-INF/pages/returnIndexError.jsp</result>
         </action>
 
+        <action name="showEditQuestionnaire"
+                class="Action.ShowEditQuestionnaireAction"
+                method="execute">
+            <interceptor-ref name="isAdminStack" />
+            <result name="success">/WEB-INF/pages/editQuestionnaire.jsp</result>
+            <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
+        </action>
+
+        <action name="editQuestionnaire"
+                class="Action.EditQuestionnaireAction"
+                method="execute">
+            <result name="success">/WEB-INF/pages/questionnaireList.jsp</result>
+        </action>
+
         <action name="createQuestionPage"
                 class="Action.CreateQuestionPageAction"
                 method="execute">

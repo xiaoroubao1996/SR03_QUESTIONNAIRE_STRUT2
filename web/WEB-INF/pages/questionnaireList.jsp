@@ -51,16 +51,16 @@
 
         <tr>
             <td>
-                <s:property value="id" />
+                <s:property value="id"/>
             </td>
             <td>
-                <s:property value="subject" />
+                <s:property value="subject"/>
             </td>
             <%
                 if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
             %>
             <td>
-                <s:property value="status" />
+                <s:property value="status"/>
             </td>
             <%
                 }
@@ -71,7 +71,18 @@
                     <input type="submit" value="Enter"/>
                 </form>
             </td>
-
+            <td>
+                <%
+                    if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
+                %>
+                <form action="showEditQuestionnaire" method="post">
+                    <input type="hidden" name="questionnaireId" value="${id}"/>
+                    <input type="submit" value="Edit">
+                </form>
+                <%
+                    }
+                %>
+            </td>
         </tr>
     </s:iterator>
 </table>

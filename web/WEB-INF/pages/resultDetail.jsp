@@ -20,25 +20,29 @@
 <s:set name="correction" value="correction"/>
 <s:set name="choice" value="choice"/>
 <div
-        <s:if test="%{#correction==0}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction==0&&#choice==0}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction==0&&#choice!=0}">style='color: #00FFFF;'</s:if>
         <s:if test="%{#correction!=0&&#choice==0}">style='color: #FF0000;'</s:if>
 >
     <s:property value="answerText1"/></div>
 
 <div
-        <s:if test="%{#correction==1}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction==1&&#choice==1}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction==1&&#choice!=1}">style='color: #00FFFF;'</s:if>
         <s:if test="%{#correction!=1&&#choice==1}">style='color: #FF0000;'</s:if>
 >
     <s:property value="answerText2"/></div>
 
 <div
-        <s:if test="%{#correction==2}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction==2&&#choice==2}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction==2&&#choice!=2}">style='color: #00FFFF;'</s:if>
         <s:if test="%{#correction!=2&&#choice==2}">style='color: #FF0000;'</s:if>
 >
     <s:property value="answerText3"/></div>
 
 <div
-        <s:if test="%{#correction==3}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction==3&&#choice==3}">style='color: #7CFC00;'</s:if>
+        <s:if test="%{#correction==3&&#choice!=3}">style='color: #00FFFF;'</s:if>
         <s:if test="%{#correction!=3&&#choice==3}">style='color: #FF0000;'</s:if>
 >
     <s:property value="answerText4"/></div>

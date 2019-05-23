@@ -83,7 +83,7 @@ public class DisplayQuestionnaireAction {
         int totalQuestion = questions.length();
         for (int i = 0; i < totalQuestion; i++) {
             String choice = questions.getJSONObject(i).getString("choice");
-            if (choice != null) {
+            if (!choice.equals("-1")) {
                 if (questions.getJSONObject(i).getJSONArray("answer").getJSONObject(Integer.valueOf(choice)).getBoolean("correction") == true) {
                     rightQuestion++;
                 }
@@ -99,6 +99,9 @@ public class DisplayQuestionnaireAction {
     private void saveChoice() {
         JSONArray questions = json.getJSONArray("question");
         JSONObject currentQuestion = questions.getJSONObject(index - 1);
+        if(choice==null) {
+            choice="-1";
+        }
         currentQuestion.put("choice", choice);
     }
 

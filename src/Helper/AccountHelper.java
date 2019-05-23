@@ -38,5 +38,9 @@ public class AccountHelper {
     public static Boolean isActive(User user){
         return user.getStatus() == Constant.STATUS.ACTIVE;
     }
+    public static Boolean isActive(String status){
+        return Constant.STATUS.valueOf(status)== Constant.STATUS.ACTIVE;
+
+    }
 
 }
