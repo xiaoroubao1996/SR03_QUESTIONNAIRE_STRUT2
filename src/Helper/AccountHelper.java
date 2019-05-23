@@ -35,4 +35,8 @@ public class AccountHelper {
         return user== Constant.USERTYPE.ADMIN;
     }
 
+    public static Boolean isActive(User user){
+        return user.getStatus() == Constant.STATUS.ACTIVE;
+    }
+
 }
