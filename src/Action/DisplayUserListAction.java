@@ -5,7 +5,7 @@ import Model.User;
 
 import java.util.ArrayList;
 
-public class UserListAction {
+public class DisplayUserListAction {
     private ArrayList<User> userList;
 
     public ArrayList<User> getUserList() {

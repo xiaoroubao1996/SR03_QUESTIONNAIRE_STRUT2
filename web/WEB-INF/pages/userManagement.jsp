@@ -20,8 +20,5 @@
     <input type="submit" value="User list"/>
 </form>
 
-<form action="searchUser" method="get">
-    <input type="submit" value="Search user"/>
-</form>
 </body>
 </html>

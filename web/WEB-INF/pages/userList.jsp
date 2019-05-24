@@ -15,6 +15,13 @@
     <title>User List</title>
 </head>
 <body>
+
+<form action="searchUser" method="get">
+    <input name="searchContent">
+    <input type="submit" value="Search user"/>
+</form>
+
+
 <table>
     <tr>
         <td> User Id </td>
@@ -28,13 +35,7 @@
         <td> Edit </td>
     </tr>
 
-    <%
-//    List<User> list = (List)request.getAttribute("userList");
 
-//    Iterator<User> it = list.iterator();
-//    while(it.hasNext()){
-//        User user = it.next();
-        %>
 <s:iterator value="userList" >
         <tr>
             <td><s:property value="id" /></td>
@@ -53,8 +54,6 @@
             </td>
         </tr>
     </s:iterator>
-        <%--<%--%>
-    <%--}--%>
-<%--%>--%>
+
 </body>
 </html>
