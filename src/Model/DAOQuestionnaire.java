@@ -7,6 +7,8 @@ import java.util.ArrayList;
 public class DAOQuestionnaire implements DAOInterface<Questionnaire> {
 
     public ArrayList<Questionnaire> selectBySearchContent(String searchContent) {
+        if(searchContent.equals("") || searchContent == null)return selectAll();
+
         ResultSet result;
         Connection conn = null;
         PreparedStatement sqlPrepare;
