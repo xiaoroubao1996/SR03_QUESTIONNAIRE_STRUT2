@@ -107,11 +107,6 @@
             <result name="success">/WEB-INF/pages/questionnaireList.jsp</result>
         </action>
 
-        <action name="searchQuestionnaire"
-                class="Action.DisplayQuestionnaireListAction"
-                method="search">
-            <result name="success">/WEB-INF/pages/questionnaireList.jsp</result>
-        </action>
 
         <action name="displayQuestionnaire"
                 class="Action.DisplayQuestionnaireAction"

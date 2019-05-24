@@ -26,9 +26,10 @@
     }
 %>
 
-<form action="searchQuestionnaire" method="get">
-    <input name="searchContent">
-    <input type="submit" value="Search questionnaire"/>
+<form action="displayQuestionnaireList" method="get">
+        <input name="searchContent" value="<s:if test="%{searchContent != null || searchContent.equals(\"\")}"><s:property value="searchContent"/></s:if><s:else></s:else>">
+        <input type="hidden" name="currentPage" value="1">
+        <input type="submit" value="Search questionnaire"/>
 </form>
 
 
@@ -97,6 +98,7 @@
         <s:iterator begin="1" end="%{totalPage}" status="incr">
             <td>
                 <form action="displayQuestionnaireList" method="get">
+                    <input type="hidden" name="searchContent" value="<s:if test="%{searchContent != null || searchContent.equals(\"\")}"><s:property value="searchContent"/></s:if><s:else></s:else>">
                     <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
                     <input type="submit" value="<s:property value="%{#incr.index+1}" />"/>
                 </form>
