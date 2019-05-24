@@ -52,7 +52,7 @@
 
 <s:set name="lastQuestion" value="lastQuestion"/>
 <s:if test="%{#lastQuestion==false}">
-    <form action="resultDetail" method="post">
+    <form action="displayResultDetail" method="post">
         <input type="hidden" name="resultId" value="<s:property value="resultId"/>"/>
         <input type="hidden" name="index" value="<s:property value="index"/>"/>
         <input type="submit" value="Next"/>
