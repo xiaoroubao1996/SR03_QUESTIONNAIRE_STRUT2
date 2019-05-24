@@ -92,6 +92,18 @@
     </s:iterator>
 </table>
 
+<table>
+    <tr>
+        <s:iterator begin="1" end="%{totalPage}" status="incr">
+            <td>
+                <form action="displayQuestionnaireList" method="get">
+                    <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
+                    <input type="submit" value="<s:property value="%{#incr.index+1}" />"/>
+                </form>
+            </td>
+        </s:iterator>
+    </tr>
+</table>
 <form action="index">
     <input type="submit" value="Return"/>
 </form>
