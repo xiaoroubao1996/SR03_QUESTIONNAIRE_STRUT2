@@ -17,7 +17,7 @@
 <body>
 
 <form action="userList" method="get">
-    <input name="searchContent">
+    <input name="searchContent" value="<s:if test="%{searchContent != null || searchContent.equals(\"\")}"><s:property value="searchContent"/></s:if><s:else></s:else>">
     <input type="hidden" name="currentPage" value="1">
     <input type="submit" value="Search user"/>
 </form>
