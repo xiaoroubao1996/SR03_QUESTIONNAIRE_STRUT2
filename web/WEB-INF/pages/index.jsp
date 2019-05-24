@@ -15,7 +15,7 @@
 <form action="displayQuestionnaireList" method="post">
     <input type="submit" value="Questionnaire list"/>
 </form>
-<form action="/resultList" method="post">
+<form action="displayResultList" method="post">
     <input type="submit" value="Result list"/>
 </form>
 

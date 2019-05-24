@@ -124,13 +124,13 @@
             <result name="new">/WEB-INF/pages/createQuestion.jsp</result>
         </action>
 
-        <action name="resultList"
+        <action name="displayResultList"
                 class="Action.DisplayResultListAction"
                 method="execute">
             <result name="success">/WEB-INF/pages/resultList.jsp</result>
         </action>
 
-        <action name="resultDetail"
+        <action name="displayResultDetail"
                 class="Action.DisplayResultDetailAction"
                 method="execute">
             <result name="success">/WEB-INF/pages/resultDetail.jsp</result>
