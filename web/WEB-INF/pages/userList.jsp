@@ -15,6 +15,13 @@
     <title>User List</title>
 </head>
 <body>
+
+<form action="searchUser" method="get">
+    <input name="searchContent">
+    <input type="submit" value="Search user"/>
+</form>
+
+
 <table>
     <tr>
         <td> User Id </td>
@@ -28,13 +35,7 @@
         <td> Edit </td>
     </tr>
 
-    <%
-//    List<User> list = (List)request.getAttribute("userList");
 
-//    Iterator<User> it = list.iterator();
-//    while(it.hasNext()){
-//        User user = it.next();
-        %>
 <s:iterator value="userList" >
         <tr>
             <td><s:property value="id" /></td>
@@ -56,5 +57,13 @@
         <%--<%--%>
     <%--}--%>
 <%--%>--%>
+    <tr>
+    <s:iterator begin="1" end="%{totalPage}" status="incr">
+        <td><form action="userList" method="get">
+            <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
+            <input type="submit" value="<s:property value="%{#incr.index+1}" />"/>
+        </form></td>
+    </s:iterator>
+    </tr>
 </body>
 </html>

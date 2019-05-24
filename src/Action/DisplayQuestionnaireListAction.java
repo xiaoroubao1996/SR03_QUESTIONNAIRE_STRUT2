@@ -9,7 +9,25 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class DisplayQuestionnaireListAction {
-    ArrayList<Questionnaire> questionnaireList;
+    private ArrayList<Questionnaire> questionnaireList;
+
+    private String searchContent;
+
+    public ArrayList<Questionnaire> getQuestionnaireList() {
+        return questionnaireList;
+    }
+
+    public void setQuestionnaireList(ArrayList<Questionnaire> questionnaireList) {
+        this.questionnaireList = questionnaireList;
+    }
+
+    public String getSearchContent() {
+        return searchContent;
+    }
+
+    public void setSearchContent(String searchContent) {
+        this.searchContent = searchContent;
+    }
 
     public String execute() {
         Map session = (Map)ActionContext.getContext().get("session");
@@ -28,11 +46,20 @@ public class DisplayQuestionnaireListAction {
         return "success";
     }
 
-    public ArrayList<Questionnaire> getQuestionnaireList() {
-        return questionnaireList;
-    }
+    public String search() throws Exception {
+        Map session = (Map)ActionContext.getContext().get("session");
+        String type =session.get("type").toString();
 
-    public void setQuestionnaireList(ArrayList<Questionnaire> questionnaireList) {
-        this.questionnaireList = questionnaireList;
+        if(AccountHelper.isAdmin(type)){
+            questionnaireList = DAOFactory.getDAOQuestionnaire().selectBySearchContent(searchContent);
+        }else {
+            questionnaireList=new ArrayList<>();
+            DAOFactory.getDAOQuestionnaire().selectBySearchContent(searchContent).forEach(questionnaire -> {
+                if(AccountHelper.isActive(questionnaire.getStatus().toString())) {
+                    questionnaireList.add(questionnaire);
+                }
+            });
+        }
+        return "success";
     }
 }
