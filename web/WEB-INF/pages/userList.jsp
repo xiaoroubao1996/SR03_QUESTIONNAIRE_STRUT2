@@ -18,6 +18,7 @@
 
 <form action="searchUser" method="get">
     <input name="searchContent">
+    <input type="hidden" name="currentPage" value="<s:property value="1" />">
     <input type="submit" value="Search user"/>
 </form>
 
