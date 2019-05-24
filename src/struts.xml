@@ -83,8 +83,8 @@
         </action>
 
         <action name="searchUser"
-                class="Action.SearchUserAction"
-                method="execute">
+                class="Action.DisplayUserListAction"
+                method="search">
             <interceptor-ref name="isAdminStack" />
             <result name="success">/WEB-INF/pages/userList.jsp</result>
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>

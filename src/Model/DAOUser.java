@@ -5,6 +5,46 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DAOUser implements DAOInterface<User> {
+    public ArrayList<User> selectBySearchContent(String searchContent) {
+        ArrayList<User> resultList = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement sqlPrepare;
+        ResultSet result;
+        try {
+            conn = SQL.getSQLConnection();
+            String sql;
+            sql = "SELECT * FROM User WHERE firstName LIKE ? OR lastName LIKE ? OR email LIKE ? OR company LIKE ? OR telephone LIKE ?";
+            sqlPrepare = conn.prepareStatement(sql);
+            sqlPrepare.setString(1, "%" + searchContent + "%");
+            sqlPrepare.setString(2, "%" + searchContent + "%");
+            sqlPrepare.setString(3, "%" + searchContent + "%");
+            sqlPrepare.setString(4, "%" + searchContent + "%");
+            sqlPrepare.setString(5, "%" + searchContent + "%");
+            result = sqlPrepare.executeQuery();
+            while (result.next()) {
+                User user = new User(result.getInt("id"),
+                        result.getString("email"),
+                        result.getString("password"),
+                        result.getString("firstName"),
+                        result.getString("lastName"),
+                        result.getString("company"),
+                        result.getString("telephone"),
+                        result.getDate("dateCreation"),
+                        Constant.STATUS.valueOf(result.getString("status")),
+                        Constant.USERTYPE.valueOf(result.getString("type")));
+
+                resultList.add(user);
+            }
+
+            conn.close();
+            return resultList;
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultList;
+    }
 
     public User selectByEmail(String email) {
         Connection conn = null;
@@ -16,7 +56,7 @@ public class DAOUser implements DAOInterface<User> {
             String sql;
             sql = "SELECT * FROM User WHERE email= ? ";
             sqlPrepare=conn.prepareStatement(sql);
-            sqlPrepare.setString(1,String.valueOf(email));
+            sqlPrepare.setString(1,email);
             result = sqlPrepare.executeQuery();
             while (result.next()) {
                 user = new User(result.getInt("id"),
