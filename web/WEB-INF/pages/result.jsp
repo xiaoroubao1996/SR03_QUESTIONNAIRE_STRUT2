@@ -16,7 +16,7 @@
 <br>
 <div>Score: <s:property value="score"/></div>
 <br>
-<form action="/index" method="post">
+<form action="index" method="post">
     <input type="submit" value="Return index"/>
 </form>
 </body>

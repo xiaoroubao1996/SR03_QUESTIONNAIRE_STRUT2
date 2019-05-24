@@ -35,28 +35,28 @@ public class CreateQuestionAction {
             newAnswer = new Answer(
                     answer1,
                     1,
-                    correction == "0",
+                    correction.equals("0"),
                     lastQuestion.getId()
             );
             DAOFactory.getDAOAnswer().add(newAnswer);
             newAnswer = new Answer(
                     answer2,
                     2,
-                    correction == "1",
+                    correction.equals("1"),
                     lastQuestion.getId()
             );
             DAOFactory.getDAOAnswer().add(newAnswer);
             newAnswer = new Answer(
                     answer3,
                     3,
-                    correction == "2",
+                    correction.equals("2"),
                     lastQuestion.getId()
             );
             DAOFactory.getDAOAnswer().add(newAnswer);
             newAnswer = new Answer(
                     answer4,
                     4,
-                    correction == "3",
+                    correction.equals("3"),
                     lastQuestion.getId()
             );
             DAOFactory.getDAOAnswer().add(newAnswer);

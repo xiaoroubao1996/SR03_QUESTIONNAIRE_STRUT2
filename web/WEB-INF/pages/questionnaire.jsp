@@ -52,7 +52,7 @@
     <input type="radio" id="choice4" name="choice" value="3">
     <label for="choice4"><s:property value="answerText4"/></label>
 
-
+    Score
     <input type="hidden" name="jsonString" value="<s:property value="jsonString"/>"/>
     <input type="hidden" name="index" value="<s:property value="index"/>"/>
     <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
