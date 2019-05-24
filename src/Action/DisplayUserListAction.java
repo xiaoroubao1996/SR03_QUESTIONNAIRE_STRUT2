@@ -48,7 +48,7 @@ public class DisplayUserListAction {
     }
 
     public String execute() throws Exception {
-        userList = DAOFactory.getDAOUser().selectAll();
+        userList = DAOFactory.getDAOUser().selectBySearchContent(searchContent);
         pagination();
         return "success";
     }
@@ -64,10 +64,10 @@ public class DisplayUserListAction {
         }
     }
 
-
-    public String search() throws Exception {
-        userList = DAOFactory.getDAOUser().selectBySearchContent(searchContent);
-        pagination();
-        return "success";
-    }
+//
+//    public String search() throws Exception {
+//        userList = DAOFactory.getDAOUser().selectBySearchContent(searchContent);
+//        pagination();
+//        return "success";
+//    }
 }

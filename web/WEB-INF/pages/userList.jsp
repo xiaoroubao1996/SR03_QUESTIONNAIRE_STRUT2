@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<form action="searchUser" method="get">
+<form action="userList" method="get">
     <input name="searchContent">
     <input type="hidden" name="currentPage" value="1">
     <input type="submit" value="Search user"/>
