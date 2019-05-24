@@ -75,7 +75,7 @@
                 <%
                     if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
                 %>
-                <form action="showEditQuestionnaire" method="post">
+                <form action="displayEditQuestionnaire" method="post">
                     <input type="hidden" name="questionnaireId" value="${id}"/>
                     <input type="submit" value="Edit">
                 </form>

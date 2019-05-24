@@ -82,7 +82,7 @@
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 
-        <action name="showEditUser"
+        <action name="displayEditUser"
                 class="Action.DisplayEditUserAction"
                 method="execute">
             <interceptor-ref name="isAdminStack" />

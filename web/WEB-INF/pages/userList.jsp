@@ -46,7 +46,7 @@
             <td><s:property value="status" /></td>
             <td><s:property value="type" /></td>
             <td>
-                <form action="showEditUser" method="get">
+                <form action="displayEditUser" method="get">
                     <input type="hidden" name="userId" value="<s:property value="id" />">
                     <input type="submit" value="Edit"/>
                 </form>
