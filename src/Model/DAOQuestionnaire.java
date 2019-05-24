@@ -18,7 +18,6 @@ public class DAOQuestionnaire implements DAOInterface<Questionnaire> {
             sql = "SELECT * FROM questionnaire WHERE subject LIKE ?";
             sqlPrepare = conn.prepareStatement(sql);
             sqlPrepare.setString(1, "%" + searchContent + "%");
-            sqlPrepare = conn.prepareStatement(sql);
             result = sqlPrepare.executeQuery();
             while (result.next()) {
                 Questionnaire questionnaire = new Questionnaire(
