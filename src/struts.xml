@@ -97,14 +97,7 @@
             <result name="success">/WEB-INF/pages/userList.jsp</result>
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
-
-        <action name="displayEditUser"
-                class="Action.DisplayEditUserAction"
-                method="execute">
-            <interceptor-ref name="isAdminStack" />
-            <result name="success">/WEB-INF/pages/editUser.jsp</result>
-            <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
-        </action>
+        
         <!--User Management Done-->
 
         <!--Questionnaire Management-->
