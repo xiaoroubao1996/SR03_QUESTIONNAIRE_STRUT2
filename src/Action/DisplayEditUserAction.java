@@ -5,7 +5,7 @@ import Model.User;
 
 import java.util.ArrayList;
 
-public class ShowEditUserAction {
+public class DisplayEditUserAction {
     private User user;
     private String userId;
 

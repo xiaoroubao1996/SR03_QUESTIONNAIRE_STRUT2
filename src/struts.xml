@@ -83,7 +83,7 @@
         </action>
 
         <action name="showEditUser"
-                class="Action.ShowEditUserAction"
+                class="Action.DisplayEditUserAction"
                 method="execute">
             <interceptor-ref name="isAdminStack" />
             <result name="success">/WEB-INF/pages/editUser.jsp</result>
@@ -95,6 +95,14 @@
                 method="execute">
             <interceptor-ref name="isAdminStack" />
             <result name="success">/WEB-INF/pages/userList.jsp</result>
+            <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
+        </action>
+
+        <action name="displayEditUser"
+                class="Action.DisplayEditUserAction"
+                method="execute">
+            <interceptor-ref name="isAdminStack" />
+            <result name="success">/WEB-INF/pages/editUser.jsp</result>
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
         <!--User Management Done-->
@@ -141,8 +149,8 @@
             <result name="error">/WEB-INF/pages/returnIndexError.jsp</result>
         </action>
 
-        <action name="showEditQuestionnaire"
-                class="Action.ShowEditQuestionnaireAction"
+        <action name="displayEditQuestionnaire"
+                class="Action.DisplayEditQuestionnaireAction"
                 method="execute">
             <interceptor-ref name="isAdminStack" />
             <result name="success">/WEB-INF/pages/editQuestionnaire.jsp</result>

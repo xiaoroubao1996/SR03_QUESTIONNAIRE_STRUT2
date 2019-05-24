@@ -4,7 +4,7 @@ import Model.DAOFactory;
 import Model.Questionnaire;
 import Model.User;
 
-public class ShowEditQuestionnaireAction {
+public class DisplayEditQuestionnaireAction {
     private Questionnaire questionnaire;
     private String questionnaireId;
 
