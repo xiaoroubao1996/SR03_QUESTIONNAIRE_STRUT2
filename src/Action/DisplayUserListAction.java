@@ -8,6 +8,11 @@ import java.util.ArrayList;
 public class DisplayUserListAction {
     private ArrayList<User> userList;
 
+    private Integer totalPage;
+
+    private Integer currentPage;
+
+
     private String searchContent;
 
     public ArrayList<User> getUserList() {
@@ -18,6 +23,22 @@ public class DisplayUserListAction {
         this.userList = userList;
     }
 
+
+    public Integer getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(Integer totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public Integer getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(Integer currentPage) {
+        this.currentPage = currentPage;
+    }
     public String getSearchContent() {
         return searchContent;
     }
@@ -28,11 +49,22 @@ public class DisplayUserListAction {
 
     public String execute() throws Exception {
         userList = DAOFactory.getDAOUser().selectAll();
+        pagination();
         return "success";
     }
+    private void pagination(){
+        totalPage=(int) Math.ceil((double)userList.size()/10);
+        if(currentPage.equals(totalPage)){
+            userList=new ArrayList<User>(userList.subList((currentPage-1)*10,userList.size()));
+        }else{
+            userList=new ArrayList<User>(userList.subList((currentPage-1)*10,currentPage*10));
+        }
+    }
+
 
     public String search() throws Exception {
         userList = DAOFactory.getDAOUser().selectBySearchContent(searchContent);
+        pagination();
         return "success";
     }
 }

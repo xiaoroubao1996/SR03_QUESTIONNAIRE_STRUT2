@@ -17,6 +17,7 @@
 </form>
 
 <form action="userList" method="get">
+    <input type="hidden" name="currentPage" value="1"/>
     <input type="submit" value="User list"/>
 </form>
 

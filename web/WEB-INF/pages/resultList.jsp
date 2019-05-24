@@ -46,7 +46,7 @@
                 <s:property value="score" />
             </td>
             <td>
-                <form action="displayResultDetail" method="post">
+                <form action="displayResultDetail" method="get">
                     <input type="hidden" name="resultId" value="${id}"/>
                     <input type="submit" value="Detail"/>
                 </form>
