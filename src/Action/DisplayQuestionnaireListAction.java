@@ -70,6 +70,7 @@ public class DisplayQuestionnaireListAction {
     }
     private void pagination(){
         if(questionnaireList.size()==0){
+            totalPage=0;
             return;
         }
         totalPage=(int) Math.ceil((double)questionnaireList.size()/10);

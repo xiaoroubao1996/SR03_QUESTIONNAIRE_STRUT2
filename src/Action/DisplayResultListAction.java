@@ -31,6 +31,7 @@ public class DisplayResultListAction {
 
     private void pagination(){
         if(resultList.size()==0){
+            totalPage=0;
             return;
         }
         totalPage=(int) Math.ceil((double)resultList.size()/10);
