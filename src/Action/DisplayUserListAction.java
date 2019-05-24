@@ -54,6 +54,7 @@ public class DisplayUserListAction {
     }
     private void pagination(){
         if(userList.size()==0){
+            totalPage=0;
             return;
         }
         totalPage=(int) Math.ceil((double)userList.size()/10);
