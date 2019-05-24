@@ -25,28 +25,28 @@
 
 <table>
     <tr>
-        <td> User Id </td>
-        <td> Email </td>
-        <td> First name </td>
-        <td> Last name </td>
-        <td> Company </td>
-        <td> Telephone </td>
-        <td> status </td>
-        <td> Type </td>
-        <td> Edit </td>
+        <td> User Id</td>
+        <td> Email</td>
+        <td> First name</td>
+        <td> Last name</td>
+        <td> Company</td>
+        <td> Telephone</td>
+        <td> status</td>
+        <td> Type</td>
+        <td> Edit</td>
     </tr>
 
 
-<s:iterator value="userList" >
+    <s:iterator value="userList">
         <tr>
-            <td><s:property value="id" /></td>
-            <td><s:property value="email" /></td>
-            <td><s:property value="firstName" /></td>
-            <td><s:property value="lastName" /></td>
-            <td><s:property value="company" /></td>
-            <td><s:property value="telephone" /></td>
-            <td><s:property value="status" /></td>
-            <td><s:property value="type" /></td>
+            <td><s:property value="id"/></td>
+            <td><s:property value="email"/></td>
+            <td><s:property value="firstName"/></td>
+            <td><s:property value="lastName"/></td>
+            <td><s:property value="company"/></td>
+            <td><s:property value="telephone"/></td>
+            <td><s:property value="status"/></td>
+            <td><s:property value="type"/></td>
             <td>
                 <form action="displayEditUser" method="get">
                     <input type="hidden" name="userId" value="<s:property value="id" />">
@@ -55,9 +55,11 @@
             </td>
         </tr>
     </s:iterator>
-        <%--<%--%>
-    <%--}--%>
+</table>
+<%--<%--%>
+<%--}--%>
 <%--%>--%>
+<table>
     <tr>
     <s:iterator begin="1" end="%{totalPage}" status="incr">
         <td><form action="userList" method="get">
@@ -67,5 +69,9 @@
         </form></td>
     </s:iterator>
     </tr>
+</table>
+<form action="index">
+    <input type="submit" value="Return"/>
+</form>
 </body>
 </html>

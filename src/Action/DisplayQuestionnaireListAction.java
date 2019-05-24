@@ -2,7 +2,9 @@ package Action;
 
 import Helper.AccountHelper;
 import Model.DAOFactory;
+import Model.Question;
 import Model.Questionnaire;
+import Model.Result;
 import com.opensymphony.xwork2.ActionContext;
 
 import java.util.ArrayList;
@@ -16,6 +18,10 @@ public class DisplayQuestionnaireListAction {
     public ArrayList<Questionnaire> getQuestionnaireList() {
         return questionnaireList;
     }
+
+    private Integer totalPage;
+
+    private Integer currentPage;
 
     public void setQuestionnaireList(ArrayList<Questionnaire> questionnaireList) {
         this.questionnaireList = questionnaireList;
@@ -61,5 +67,32 @@ public class DisplayQuestionnaireListAction {
             });
         }
         return "success";
+    }
+    private void pagination(){
+        if(questionnaireList.size()==0){
+            return;
+        }
+        totalPage=(int) Math.ceil((double)questionnaireList.size()/10);
+        if(currentPage.equals(totalPage)){
+            questionnaireList=new ArrayList<Questionnaire>(questionnaireList.subList((currentPage-1)*10,questionnaireList.size()));
+        }else{
+            questionnaireList=new ArrayList<Questionnaire>(questionnaireList.subList((currentPage-1)*10,currentPage*10));
+        }
+    }
+
+    public Integer getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(Integer totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public Integer getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(Integer currentPage) {
+        this.currentPage = currentPage;
     }
 }

@@ -34,16 +34,16 @@
         <% %>
         <tr>
             <td>
-                <s:property value="id" />
+                <s:property value="id"/>
             </td>
             <td>
-                <s:property value="trainee" />
+                <s:property value="trainee"/>
             </td>
             <td>
-                <s:property value="dateCreation" />
+                <s:property value="dateCreation"/>
             </td>
             <td>
-                <s:property value="score" />
+                <s:property value="score"/>
             </td>
             <td>
                 <form action="displayResultDetail" method="get">
@@ -55,7 +55,18 @@
         </tr>
     </s:iterator>
 </table>
-
+<table>
+    <tr>
+        <s:iterator begin="1" end="%{totalPage}" status="incr">
+            <td>
+                <form action="displayResultList" method="get">
+                    <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
+                    <input type="submit" value="<s:property value="%{#incr.index+1}" />"/>
+                </form>
+            </td>
+        </s:iterator>
+    </tr>
+</table>
 <form action="index">
     <input type="submit" value="Return"/>
 </form>

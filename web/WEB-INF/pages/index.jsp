@@ -13,9 +13,11 @@
 <body>
 
 <form action="displayQuestionnaireList" method="post">
+    <input type="hidden" name="currentPage" value="1"/>
     <input type="submit" value="Questionnaire list"/>
 </form>
 <form action="displayResultList" method="post">
+    <input type="hidden" name="currentPage" value="1"/>
     <input type="submit" value="Result list"/>
 </form>
 

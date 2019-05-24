@@ -53,6 +53,9 @@ public class DisplayUserListAction {
         return "success";
     }
     private void pagination(){
+        if(userList.size()==0){
+            return;
+        }
         totalPage=(int) Math.ceil((double)userList.size()/10);
         if(currentPage.equals(totalPage)){
             userList=new ArrayList<User>(userList.subList((currentPage-1)*10,userList.size()));
