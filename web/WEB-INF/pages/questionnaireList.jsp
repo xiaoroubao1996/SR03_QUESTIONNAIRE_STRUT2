@@ -26,6 +26,11 @@
     }
 %>
 
+<form action="searchQuestionnaire" method="get">
+    <input name="searchContent">
+    <input type="submit" value="Search questionnaire"/>
+</form>
+
 
 <table>
 

@@ -6,6 +6,37 @@ import java.util.ArrayList;
 
 public class DAOQuestionnaire implements DAOInterface<Questionnaire> {
 
+    public ArrayList<Questionnaire> selectBySearchContent(String searchContent) {
+        ResultSet result;
+        Connection conn = null;
+        PreparedStatement sqlPrepare;
+        ArrayList<Questionnaire> questionnaires = new ArrayList<Questionnaire>();
+        try {
+            conn = SQL.getSQLConnection();
+
+            String sql;
+            sql = "SELECT * FROM questionnaire WHERE subject LIKE ?";
+            sqlPrepare = conn.prepareStatement(sql);
+            sqlPrepare.setString(1, "%" + searchContent + "%");
+            sqlPrepare = conn.prepareStatement(sql);
+            result = sqlPrepare.executeQuery();
+            while (result.next()) {
+                Questionnaire questionnaire = new Questionnaire(
+                        result.getInt("id"),
+                        result.getString("subject"),
+                        Constant.STATUS.valueOf(result.getString("status"))
+                );
+                questionnaires.add(questionnaire);
+            }
+
+            conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return questionnaires;
+    }
 
     @Override
     public Questionnaire selectByID(Integer id) {
