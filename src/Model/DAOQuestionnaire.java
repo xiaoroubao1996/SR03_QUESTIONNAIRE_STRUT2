@@ -7,6 +7,8 @@ import java.util.ArrayList;
 public class DAOQuestionnaire implements DAOInterface<Questionnaire> {
 
     public ArrayList<Questionnaire> selectBySearchContent(String searchContent) {
+        if(searchContent.equals("") || searchContent == null)return selectAll();
+
         ResultSet result;
         Connection conn = null;
         PreparedStatement sqlPrepare;
@@ -18,7 +20,6 @@ public class DAOQuestionnaire implements DAOInterface<Questionnaire> {
             sql = "SELECT * FROM questionnaire WHERE subject LIKE ?";
             sqlPrepare = conn.prepareStatement(sql);
             sqlPrepare.setString(1, "%" + searchContent + "%");
-            sqlPrepare = conn.prepareStatement(sql);
             result = sqlPrepare.executeQuery();
             while (result.next()) {
                 Questionnaire questionnaire = new Questionnaire(

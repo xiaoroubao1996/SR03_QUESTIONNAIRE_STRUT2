@@ -35,52 +35,6 @@ public class DisplayQuestionnaireListAction {
         this.searchContent = searchContent;
     }
 
-    public String execute() {
-        Map session = (Map)ActionContext.getContext().get("session");
-        String type =session.get("type").toString();
-
-        if(AccountHelper.isAdmin(type)){
-            questionnaireList = DAOFactory.getDAOQuestionnaire().selectAll();
-        }else {
-            questionnaireList=new ArrayList<>();
-            DAOFactory.getDAOQuestionnaire().selectAll().forEach(questionnaire -> {
-                if(AccountHelper.isActive(questionnaire.getStatus().toString())) {
-                    questionnaireList.add(questionnaire);
-                }
-            });
-        }
-        return "success";
-    }
-
-    public String search() throws Exception {
-        Map session = (Map)ActionContext.getContext().get("session");
-        String type =session.get("type").toString();
-
-        if(AccountHelper.isAdmin(type)){
-            questionnaireList = DAOFactory.getDAOQuestionnaire().selectBySearchContent(searchContent);
-        }else {
-            questionnaireList=new ArrayList<>();
-            DAOFactory.getDAOQuestionnaire().selectBySearchContent(searchContent).forEach(questionnaire -> {
-                if(AccountHelper.isActive(questionnaire.getStatus().toString())) {
-                    questionnaireList.add(questionnaire);
-                }
-            });
-        }
-        return "success";
-    }
-    private void pagination(){
-        if(questionnaireList.size()==0){
-            totalPage=0;
-            return;
-        }
-        totalPage=(int) Math.ceil((double)questionnaireList.size()/10);
-        if(currentPage.equals(totalPage)){
-            questionnaireList=new ArrayList<Questionnaire>(questionnaireList.subList((currentPage-1)*10,questionnaireList.size()));
-        }else{
-            questionnaireList=new ArrayList<Questionnaire>(questionnaireList.subList((currentPage-1)*10,currentPage*10));
-        }
-    }
-
     public Integer getTotalPage() {
         return totalPage;
     }
@@ -95,5 +49,36 @@ public class DisplayQuestionnaireListAction {
 
     public void setCurrentPage(Integer currentPage) {
         this.currentPage = currentPage;
+    }
+    
+    public String execute() {
+        Map session = (Map)ActionContext.getContext().get("session");
+        String type =session.get("type").toString();
+
+        if(AccountHelper.isAdmin(type)){
+            questionnaireList = DAOFactory.getDAOQuestionnaire().selectBySearchContent(searchContent);
+        }else {
+            questionnaireList=new ArrayList<>();
+            DAOFactory.getDAOQuestionnaire().selectBySearchContent(searchContent).forEach(questionnaire -> {
+                if(AccountHelper.isActive(questionnaire.getStatus().toString())) {
+                    questionnaireList.add(questionnaire);
+                }
+            });
+        }
+        pagination();
+        return "success";
+    }
+
+    private void pagination(){
+        if(questionnaireList.size()==0){
+            totalPage=0;
+            return;
+        }
+        totalPage=(int) Math.ceil((double)questionnaireList.size()/10);
+        if(currentPage.equals(totalPage)){
+            questionnaireList=new ArrayList<Questionnaire>(questionnaireList.subList((currentPage-1)*10,questionnaireList.size()));
+        }else{
+            questionnaireList=new ArrayList<Questionnaire>(questionnaireList.subList((currentPage-1)*10,currentPage*10));
+        }
     }
 }

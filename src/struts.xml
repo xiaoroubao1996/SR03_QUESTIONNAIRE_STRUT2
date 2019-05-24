@@ -82,14 +82,6 @@
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 
-        <action name="searchUser"
-                class="Action.DisplayUserListAction"
-                method="search">
-            <interceptor-ref name="isAdminStack" />
-            <result name="success">/WEB-INF/pages/userList.jsp</result>
-            <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
-        </action>
-
         <action name="displayEditUser"
                 class="Action.DisplayEditUserAction"
                 method="execute">
@@ -115,11 +107,6 @@
             <result name="success">/WEB-INF/pages/questionnaireList.jsp</result>
         </action>
 
-        <action name="searchQuestionnaire"
-                class="Action.DisplayQuestionnaireListAction"
-                method="search">
-            <result name="success">/WEB-INF/pages/questionnaireList.jsp</result>
-        </action>
 
         <action name="displayQuestionnaire"
                 class="Action.DisplayQuestionnaireAction"

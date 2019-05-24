@@ -13,6 +13,7 @@
 <body>
 
 <form action="displayQuestionnaireList" method="post">
+    <input type="hidden" name="searchContent" value="">
     <input type="hidden" name="currentPage" value="1"/>
     <input type="submit" value="Questionnaire list"/>
 </form>

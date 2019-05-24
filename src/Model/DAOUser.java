@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class DAOUser implements DAOInterface<User> {
     public ArrayList<User> selectBySearchContent(String searchContent) {
+        if(searchContent.equals("") || searchContent == null)return selectAll();
+
         ArrayList<User> resultList = new ArrayList<>();
         Connection conn = null;
         PreparedStatement sqlPrepare;

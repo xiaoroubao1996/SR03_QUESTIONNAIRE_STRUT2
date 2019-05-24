@@ -16,9 +16,9 @@
 </head>
 <body>
 
-<form action="searchUser" method="get">
-    <input name="searchContent">
-    <input type="hidden" name="currentPage" value="<s:property value="1" />">
+<form action="userList" method="get">
+    <input name="searchContent" value="<s:if test="%{searchContent != null || searchContent.equals(\"\")}"><s:property value="searchContent"/></s:if><s:else></s:else>">
+    <input type="hidden" name="currentPage" value="1">
     <input type="submit" value="Search user"/>
 </form>
 
@@ -61,14 +61,13 @@
 <%--%>--%>
 <table>
     <tr>
-        <s:iterator begin="1" end="%{totalPage}" status="incr">
-            <td>
-                <form action="userList" method="get">
-                    <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
-                    <input type="submit" value="<s:property value="%{#incr.index+1}" />"/>
-                </form>
-            </td>
-        </s:iterator>
+    <s:iterator begin="1" end="%{totalPage}" status="incr">
+        <td><form action="userList" method="get">
+            <input type="hidden" name="searchContent" value="<s:if test="%{searchContent != null || searchContent.equals(\"\")}"><s:property value="searchContent"/></s:if><s:else></s:else>" />
+            <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
+            <input type="submit" value="<s:property value="%{#incr.index+1}" />"/>
+        </form></td>
+    </s:iterator>
     </tr>
 </table>
 <form action="index">
