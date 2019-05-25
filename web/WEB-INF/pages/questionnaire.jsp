@@ -25,10 +25,6 @@
     <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
     <input type="submit" value="Create">
 </form>
-<form action="/modifyQuestion" method="post">
-    <label> Modify Question </label>
-    <input type="submit" value="Create">
-</form>
 <%
     }
 %>
