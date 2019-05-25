@@ -6,7 +6,7 @@ import Model.User;
 
 import java.util.ArrayList;
 
-public class DisplayQuestionList {
+public class DisplayQuestionListAction {
     private ArrayList<Question> questionList;
     private String questionnaireId;
     private Integer totalPage;
@@ -14,9 +14,21 @@ public class DisplayQuestionList {
 
     public String execute() throws Exception {
         questionList = DAOFactory.getDAOQuestion().selectByQuestionnaireID(Integer.valueOf(questionnaireId));
+        pagination();
         return "success";
     }
-
+    private void pagination(){
+        if(questionList.size()==0){
+            totalPage=0;
+            return;
+        }
+        totalPage=(int) Math.ceil((double)questionList.size()/10);
+        if(currentPage.equals(totalPage)){
+            questionList=new ArrayList<Question>(questionList.subList((currentPage-1)*10,questionList.size()));
+        }else{
+            questionList=new ArrayList<Question>(questionList.subList((currentPage-1)*10,currentPage*10));
+        }
+    }
     public ArrayList<Question> getQuestionList() {
         return questionList;
     }

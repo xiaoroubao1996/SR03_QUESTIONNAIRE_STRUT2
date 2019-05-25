@@ -29,7 +29,6 @@
         </td>
     </tr>
     <s:iterator value="questionList">
-        <% %>
         <tr>
             <td>
                 <s:property value="id"/>
@@ -44,9 +43,24 @@
                 <s:property value="status"/>
             </td>
             <td>
-                <form action="editQuestion" method="get">
+                <form action="displayEditQuestion" method="get">
                     <input type="hidden" name="questionId" value="${id}"/>
+                    <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId" />"/>
                     <input type="submit" value="Edit"/>
+                </form>
+            </td>
+            <td>
+                <form action="moveUpQuestion" method="get">
+                    <input type="hidden" name="questionId" value="${id}"/>
+                    <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId" />"/>
+                    <input type="submit" value="Move up"/>
+                </form>
+            </td>
+            <td>
+                <form action="moveDownQuestion" method="get">
+                    <input type="hidden" name="questionId" value="${id}"/>
+                    <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId" />"/>
+                    <input type="submit" value="Move down"/>
                 </form>
             </td>
 
@@ -59,6 +73,7 @@
             <td>
                 <form action="displayQuestionList" method="get">
                     <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
+                    <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId" />">
                     <input type="submit" value="<s:property value="%{#incr.index+1}" />"/>
                 </form>
             </td>
