@@ -9,17 +9,24 @@
 <html>
 <head>
     <title>User Management</title>
+    <%@include file="./head.jsp"%>
 </head>
 <body>
+<%@include file="./title.jsp"%>
+
+
+<div class="container panel panel-default col-md-3">
+    <div class="panel-body">
+        <h1>User Management</h1>
 
 <form action="displayCreateUser" method="get">
-    <input type="submit" value="Create user"/>
+    <input class="btn btn-primary" type="submit" value="Create user"/>
 </form>
 
 <form action="userList" method="get">
     <input type="hidden" name="searchContent" value=""/>
     <input type="hidden" name="currentPage" value="1"/>
-    <input type="submit" value="User list"/>
+    <input class="btn btn-primary" type="submit" value="User list"/>
 </form>
 
 </body>

@@ -11,23 +11,26 @@
 <html>
 <head>
     <title>Login</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href=" <%=request.getContextPath()%>/css/bootstrap.css"/>
-    <%@include file="../include/head.jsp"%>
+    <%@include file="./head.jsp"%>
 </head>
 <body>
-<div>Login</div>
+<%@include file="./title.jsp"%>
 
-<form action="login" method="post">
-    <label>Email</label>
-    <input class="btn" type="email" id="email" name="email"/>
-    <br>
-    <label> Password </label>
-    <input type="password" id="psw" name="password"/>
-    <br>
-    <input type="submit" value="Login">
-</form>
 
+<div class="container panel panel-default col-md-3">
+    <div class="panel-body">
+        <h1>Login</h1>
+
+        <form class="form-horizontal" action="login" method="post">
+            <label class="control-label">Email</label>
+            <input class="form-control form-top" type="email" id="email" name="email"/>
+            <br>
+            <label class="control-label"> Password </label>
+            <input class="form-control form-bottom" type="password" id="psw" name="password"/>
+            <br>
+            <input class="btn btn-primary btn-lg" type="submit" value="Login">
+        </form>
+    </div>
+</div>
 </body>
 </html>

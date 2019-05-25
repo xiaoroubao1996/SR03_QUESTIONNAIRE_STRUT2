@@ -10,11 +10,22 @@
 <html>
 <head>
     <title>Error</title>
+    <%@include file="./head.jsp"%>
 </head>
 <body>
-<div><s:if test="%{error != null}"><s:property value="error"/></s:if><s:else>error</s:else></div>
-<form action="loginError">
-    <input type="submit" value="Return" />
-</form>
+<%@include file="./title.jsp"%>
+
+<div class="container panel panel-default col-md-3">
+    <div class="content">
+        <div class="alert alert-danger"><s:if test="%{error != null}"><s:property value="error"/></s:if><s:else>error!</s:else></div>
+    </div>
+    <form action="loginError">
+        <input class="btn btn-primary" type="submit" value="Return" />
+    </form>
+</div>
+
+
+
+
 </body>
 </html>
