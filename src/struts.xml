@@ -156,6 +156,12 @@
             <result name="success">/WEB-INF/pages/questionnaireList.jsp</result>
         </action>
 
+        <action name="displayQuestionList"
+                class="Action.DisplayQuestionList"
+                method="execute">
+            <result name="success">/WEB-INF/pages/questionList.jsp</result>
+        </action>
+
         <action name="createQuestionPage"
                 class="Action.CreateQuestionPageAction"
                 method="execute">

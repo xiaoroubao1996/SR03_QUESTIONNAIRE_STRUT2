@@ -89,6 +89,18 @@
                     }
                 %>
             </td>
+            <td>
+                <%
+                    if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
+                %>
+                <form action="displayQuestionList" method="post">
+                    <input type="hidden" name="questionnaireId" value="${id}"/>
+                    <input type="submit" value="Manage questions">
+                </form>
+                <%
+                    }
+                %>
+            </td>
         </tr>
     </s:iterator>
 </table>
