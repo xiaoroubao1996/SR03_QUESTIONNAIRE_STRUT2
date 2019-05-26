@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<jsp:useBean id="user" class="Model.User" scope="request"></jsp:useBean>
+
 <html>
 <head>
     <title>Edit User</title>

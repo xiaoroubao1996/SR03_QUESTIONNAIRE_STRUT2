@@ -17,7 +17,7 @@
 
 <div class="container panel panel-default col-md-3">
     <div class="content">
-        <div class="alert alert-danger"><s:if test="%{error != null}"><s:property value="error"/></s:if><s:else>error!</s:else></div>
+        <h1 align="center" width="50%" class="alert alert-danger"><s:if test="%{error != null}"><s:property value="error"/></s:if><s:else>error!</s:else></h1>
     </div>
     <form action="loginError">
         <input class="btn btn-primary" type="submit" value="Return" />

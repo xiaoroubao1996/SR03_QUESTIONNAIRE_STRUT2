@@ -11,117 +11,112 @@
 <html>
 <head>
     <title>Questionnaire list</title>
+    <%@include file="./head.jsp"%>
 </head>
 <body>
-<div>Questionnaire List</div>
-
-<%
-    if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
-%>
-<form action="createQuestionnairePage" method="post">
-    <label> Create Questionnaire </label>
-    <input type="submit" value="Create">
-</form>
-<%
-    }
-%>
-
-<form action="displayQuestionnaireList" method="get">
-        <input name="searchContent" value="<s:property value="searchContent"/>">
-        <input type="hidden" name="currentPage" value="1">
-        <input type="submit" value="Search questionnaire"/>
-</form>
+<%@include file="./title.jsp"%>
 
 
-<table>
+<div class="container panel panel-default col-md-6">
+    <div class="panel-body">
+        <h1>Questionnaire List</h1>
 
-    <tr>
-        <td>
-            Questionnaire Id
-        </td>
-        <td>
-            Subject
-        </td>
         <%
             if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
         %>
-        <td>
-            Status
-        </td>
+        <form class="form-horizontal" action="createQuestionnairePage" method="post">
+            <label> Create Questionnaire </label>
+            <input class="btn btn-primary" type="submit" value="Create">
+        </form>
         <%
             }
         %>
-    </tr>
 
-    <s:iterator value="questionnaireList">
+        <form class="form-horizontal" action="displayQuestionnaireList" method="get">
+                <input class="form-control col-md-5"  style="display:inline;" name="searchContent" value="<s:property value="searchContent"/>">
+                <input type="hidden" name="currentPage" value="1">
+                <input class="btn btn-primary" type="submit" value="Search questionnaire"/>
+        </form>
 
-        <tr>
-            <td>
-                <s:property value="id"/>
-            </td>
-            <td>
-                <s:property value="subject"/>
-            </td>
-            <%
-                if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
-            %>
-            <td>
-                <s:property value="status"/>
-            </td>
-            <%
-                }
-            %>
-            <td>
-                <form action="displayQuestionnaire" method="post">
-                    <input type="hidden" name="questionnaireId" value="${id}"/>
-                    <input type="submit" value="Enter"/>
-                </form>
-            </td>
-            <td>
+
+        <table  class="table">
+            <tr>
+                <td>Questionnaire Id</td>
+                <td>Subject</td>
                 <%
                     if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
                 %>
-                <form action="displayEditQuestionnaire" method="post">
-                    <input type="hidden" name="questionnaireId" value="${id}"/>
-                    <input type="submit" value="Edit">
-                </form>
+                <td>Status</td>
                 <%
                     }
                 %>
-            </td>
-            <td>
-                <%
-                    if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
-                %>
-                <form action="displayQuestionList" method="post">
-                    <input type="hidden" name="currentPage" value="1"/>
-                    <input type="hidden" name="questionnaireId" value="${id}"/>
-                    <input type="submit" value="Manage questions">
-                </form>
-                <%
-                    }
-                %>
-            </td>
-        </tr>
-    </s:iterator>
-</table>
+            </tr>
 
-<table>
-    <tr>
-        <s:iterator begin="1" end="%{totalPage}" status="incr">
-            <td>
-                <form action="displayQuestionnaireList" method="get">
-                    <input type="hidden" name="searchContent" value="<s:property value="searchContent"/>">
-                    <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
-                    <input type="submit" value="<s:property value="%{#incr.index+1}" />"/>
-                </form>
-            </td>
-        </s:iterator>
-    </tr>
-</table>
-<form action="index">
-    <input type="submit" value="Return"/>
-</form>
+            <s:iterator value="questionnaireList">
+
+                <tr>
+                    <td><s:property value="id"/></td>
+                    <td><s:property value="subject"/></td>
+                    <%
+                        if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
+                    %>
+                    <td><s:property value="status"/></td>
+                    <%
+                        }
+                    %>
+                    <td>
+                        <form action="displayQuestionnaire" method="post">
+                            <input type="hidden" name="questionnaireId" value="${id}"/>
+                            <input  class="btn btn-primary btn-xs" type="submit" value="Enter"/>
+                        </form>
+                    </td>
+                    <td>
+                        <%
+                            if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
+                        %>
+                        <form action="displayEditQuestionnaire" method="post">
+                            <input type="hidden" name="questionnaireId" value="${id}"/>
+                            <input  class="btn btn-primary btn-xs" type="submit" value="Edit">
+                        </form>
+                        <%
+                            }
+                        %>
+                    </td>
+                    <td>
+                        <%
+                            if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
+                        %>
+                        <form action="displayQuestionList" method="post">
+                            <input type="hidden" name="currentPage" value="1"/>
+                            <input type="hidden" name="questionnaireId" value="${id}"/>
+                            <input  class="btn btn-primary btn-xs" type="submit" value="Manage questions">
+                        </form>
+                        <%
+                            }
+                        %>
+                    </td>
+                </tr>
+            </s:iterator>
+        </table>
+
+        <div class="btn-group">
+            <div>&laquo;</div>
+                <s:iterator begin="1" end="%{totalPage}" status="incr">
+                    <td>
+                        <form action="displayQuestionnaireList" method="get">
+                            <input type="hidden" name="searchContent" value="<s:property value="searchContent"/>">
+                            <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
+                            <input class="btn btn-link" type="submit" value="<s:property value="%{#incr.index+1}" />"/>
+                        </form>
+                    </td>
+                </s:iterator>
+            <div>&raquo;</div>
+        </div>
+        <form action="index">
+            <input class="btn btn-primary" type="submit" value="Return"/>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

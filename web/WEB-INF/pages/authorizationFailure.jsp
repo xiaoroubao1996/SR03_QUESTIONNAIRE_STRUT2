@@ -9,11 +9,17 @@
 <html>
 <head>
     <title>Authorization failure</title>
+    <%@include file="./head.jsp"%>
 </head>
 <body>
-<div>Authorization failure</div>
-<form action="index" method="get">
-    <input type="submit" value="Return" />
-</form>
+<%@include file="./title.jsp"%>
+<div class="container panel panel-default col-md-3">
+    <div class="content">
+        <h1  align="center" width="50%" class="alert alert-danger" >Authorization failure</h1>
+        <form action="index" method="get">
+            <input class="btn btn-primary" type="submit" value="Return"/>
+        </form>
+    </div>
+</div>
 </body>
 </html>
