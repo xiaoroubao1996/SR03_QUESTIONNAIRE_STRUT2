@@ -19,15 +19,16 @@
     <div class="panel-body">
         <h1>User Management</h1>
 
-<form action="displayCreateUser" method="get">
-    <input class="btn btn-primary" type="submit" value="Create user"/>
-</form>
+        <form action="displayCreateUser" method="get">
+            <input class="btn btn-primary" type="submit" value="Create user"/>
+        </form>
 
-<form action="userList" method="get">
-    <input type="hidden" name="searchContent" value=""/>
-    <input type="hidden" name="currentPage" value="1"/>
-    <input class="btn btn-primary" type="submit" value="User list"/>
-</form>
-
+        <form action="userList" method="get">
+            <input type="hidden" name="searchContent" value=""/>
+            <input type="hidden" name="currentPage" value="1"/>
+            <input class="btn btn-primary" type="submit" value="User list"/>
+        </form>
+    </div>
+</div>
 </body>
 </html>

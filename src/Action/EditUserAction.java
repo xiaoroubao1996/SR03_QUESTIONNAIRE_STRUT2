@@ -5,7 +5,7 @@ import Model.User;
 
 import java.util.ArrayList;
 
-public class EditUserAction {
+public class EditUserAction{
     private User user;
 
     private ArrayList<User> userList;
@@ -31,4 +31,5 @@ public class EditUserAction {
         userList = DAOFactory.getDAOUser().selectAll();
         return "success";
     }
+
 }

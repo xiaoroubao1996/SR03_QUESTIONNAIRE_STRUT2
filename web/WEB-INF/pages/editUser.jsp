@@ -13,49 +13,77 @@
 <html>
 <head>
     <title>Edit User</title>
+    <%@include file="./head.jsp"%>
 </head>
 <body>
-<div>Edit User</div>
-<form action="editUser" method="post">
-    <label> First name </label>
-    <input type="hidden" id="id" name="user.id" value="<s:property value="user.id"/>"/>
-    <input type="text" id="frname" name="user.firstName" value="<s:property value="user.firstName"/>"/>
-    <br>
-    <label> Last name </label>
-    <input type="text" id="laname" name="user.lastName" value="<s:property value="user.lastName"/>"/>
-    <br>
-    <label>Email</label>
-    <input type="email" id="email" name="user.email" value="<s:property value="user.email"/>"/>
-    <br>
-    <label> Password </label>
-    <input type="password" id="psw" name="user.password" value="<s:property value="user.password"/>"/>
-    <br>
-    <label> Company </label>
-    <input type="text" id="cp" name="user.company" value="<s:property value="user.company"/>"/>
-    <br>
-    <label> Telephone </label>
-    <input type="number" id="tel" name="user.telephone" value="<s:property value="user.telephone"/>"/>
-    <br>
+<%@include file="./title.jsp"%>
 
-    <s:set name="user" value="user"/>
-    <input type="radio" id="typeChoice1" name="user.type" value="ADMIN" <s:if test="%{#user.type == @Model.Constant$USERTYPE@ADMIN}">Checked</s:if>>
-    <label for="typeChoice1">Administrator</label>
 
-    <input type="radio" id="typeChoice2" name="user.type" value="TRAINEE" <s:if test="%{#user.type == @Model.Constant$USERTYPE@TRAINNEE}">Checked</s:if>>
-    <label for="typeChoice2">Trainee</label>
-    </br>
+<div class="container panel panel-default col-md-6">
+    <div class="panel-body">
+        <h1 class="col-md-3">Edit User</h1>
+        <form class="form-horizontal" action="editUser" method="post">
+            <div class="form-group">
+                <label class="col-md-3"> First name </label>
+                <input type="hidden" id="id" name="user.id" value="<s:property value="user.id"/>"/>
+                <input class="col-md-3" type="text" id="frname" name="user.firstName" value="<s:property value="user.firstName"/>"/>
+                <br>
+            </div>
 
-    <input type="radio" id="activeChoice1" name="user.status" value="ACTIVE" <s:if test="%{#user.status == @Model.Constant$STATUS@ACTIVE}">Checked</s:if>>
-    <label for="activeChoice1">Active</label>
+            <div class="form-group">
+                <label class="col-md-3"> Last name </label>
+                <input class="col-md-3" type="text" id="laname" name="user.lastName" value="<s:property value="user.lastName"/>"/>
+                <br>
+            </div>
 
-    <input type="radio" id="activeChoice2" name="user.status" value="INACTIVE"<s:if test="%{#user.status == @Model.Constant$STATUS@INACTIVE}">Checked</s:if>>
-    <label for="typeChoice2">Inactive</label>
+            <div class="form-group">
+                <label class="col-md-3">Email</label>
+                <input class="col-md-3" type="email" id="email" name="user.email" value="<s:property value="user.email"/>"/>
+                <br>
+            </div>
 
-    <br>
-    <input type="submit" value="Submit">
-</form>
-<form action="index">
-    <input type="submit" value="Return"/>
-</form>
+            <div class="form-group">
+                <label class="col-md-3"> Password </label>
+                <input class="col-md-3" type="password" id="psw" name="user.password" value="<s:property value="user.password"/>"/>
+                <br>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3"> Company </label>
+                <input class="col-md-3" type="text" id="cp" name="user.company" value="<s:property value="user.company"/>"/>
+                <br>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3"> Telephone </label>
+                <input class="col-md-3" type="number" id="tel" name="user.telephone" value="<s:property value="user.telephone"/>"/>
+                <br>
+            </div>
+
+            <div class="form-group col-md-3">
+                <s:set name="user" value="user"/>
+                <input type="radio" id="typeChoice1" name="user.type" value="ADMIN" <s:if test="%{#user.type == @Model.Constant$USERTYPE@ADMIN}">Checked</s:if>>
+                <label for="typeChoice1">Administrator</label>
+
+                <input type="radio" id="typeChoice2" name="user.type" value="TRAINEE" <s:if test="%{#user.type == @Model.Constant$USERTYPE@TRAINEE}">Checked</s:if>>
+                <label for="typeChoice2">Trainee</label>
+                </br>
+            </div>
+
+            <div class="form-group col-md-3">
+                <input type="radio" id="activeChoice1" name="user.status" value="ACTIVE" <s:if test="%{#user.status == @Model.Constant$STATUS@ACTIVE}">Checked</s:if>>
+                <label for="activeChoice1">Active</label>
+
+                <input type="radio" id="activeChoice2" name="user.status" value="INACTIVE"<s:if test="%{#user.status == @Model.Constant$STATUS@INACTIVE}">Checked</s:if>>
+                <label for="typeChoice2">Inactive</label>
+            </div>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+        <form action="index">
+            <input class="btn btn-default" type="submit" value="Return"/>
+        </form>
+    </div>
+</div>
 </body>
 </html>

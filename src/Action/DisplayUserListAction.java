@@ -5,7 +5,8 @@ import Model.User;
 
 import java.util.ArrayList;
 
-public class DisplayUserListAction {
+public class DisplayUserListAction{
+
     private ArrayList<User> userList;
 
     private Integer totalPage;
@@ -14,6 +15,11 @@ public class DisplayUserListAction {
 
 
     private String searchContent;
+
+    public DisplayUserListAction(){
+        searchContent = "";
+        currentPage = 0;
+    }
 
     public ArrayList<User> getUserList() {
         return userList;
@@ -64,11 +70,4 @@ public class DisplayUserListAction {
             userList=new ArrayList<User>(userList.subList((currentPage-1)*10,currentPage*10));
         }
     }
-
-//
-//    public String search() throws Exception {
-//        userList = DAOFactory.getDAOUser().selectBySearchContent(searchContent);
-//        pagination();
-//        return "success";
-//    }
 }

@@ -92,7 +92,7 @@
                 class="Action.EditUserAction"
                 method="execute">
             <interceptor-ref name="isAdminStack"/>
-            <result name="success">/WEB-INF/pages/userList.jsp</result>
+            <result name="success">/WEB-INF/pages/userManagement.jsp</result>
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 
