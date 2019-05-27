@@ -52,6 +52,8 @@ public class DisplayQuestionnaireListAction {
     }
     
     public String execute() {
+        if(searchContent == null)searchContent = "";
+        if(currentPage == null)currentPage = 1;
         Map session = (Map)ActionContext.getContext().get("session");
         String type =session.get("type").toString();
 

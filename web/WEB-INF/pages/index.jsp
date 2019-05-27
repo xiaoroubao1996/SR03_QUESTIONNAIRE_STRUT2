@@ -17,9 +17,7 @@
 <div class="container panel panel-default col-md-3">
     <div class="panel-body">
         <h1>Welcome</h1>
-        <form action="displayQuestionnaireList" method="post">
-            <input type="hidden" name="searchContent" value="">
-            <input type="hidden" name="currentPage" value="1"/>
+        <form action="displayQuestionnaireList" method="get">
             <input class="btn btn-primary" type="submit" value="Questionnaire list"/>
         </form>
         <form action="displayResultList" method="post">
@@ -35,11 +33,13 @@
             <input class="btn btn-primary" type="submit" value="User Management"/>
         </form>
 
-
-
         <%
             }
         %>
+
+        <form action="loginPage">
+            <input class="btn btn-primary" type="submit" value="Return"/>
+        </form>
     </h1>
 </div>
 </body>

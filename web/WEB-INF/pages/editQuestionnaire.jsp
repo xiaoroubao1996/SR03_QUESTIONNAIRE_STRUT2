@@ -33,7 +33,7 @@
             <input class="btn btn-primary" type="submit" value="Submit">
         </form>
 
-        <form action="index">
+        <form action="displayQuestionnaireList">
             <input  class="btn btn-default" type="submit" value="Return"/>
         </form>
     </div>

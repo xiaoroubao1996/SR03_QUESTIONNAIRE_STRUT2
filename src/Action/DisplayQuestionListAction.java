@@ -11,9 +11,12 @@ public class DisplayQuestionListAction {
     private String questionnaireId;
     private Integer totalPage;
     private Integer currentPage;
+    private String questionnaireSubject;
 
     public String execute() throws Exception {
+        if(currentPage == null) currentPage = 1;
         questionList = DAOFactory.getDAOQuestion().selectByQuestionnaireID(Integer.valueOf(questionnaireId));
+        questionnaireSubject = DAOFactory.getDAOQuestionnaire().selectByID(Integer.valueOf(questionnaireId)).getSubject();
         pagination();
         return "success";
     }
@@ -59,5 +62,13 @@ public class DisplayQuestionListAction {
 
     public void setCurrentPage(Integer currentPage) {
         this.currentPage = currentPage;
+    }
+
+    public String getQuestionnaireSubject() {
+        return questionnaireSubject;
+    }
+
+    public void setQuestionnaireSubject(String questionnaireSubject) {
+        this.questionnaireSubject = questionnaireSubject;
     }
 }

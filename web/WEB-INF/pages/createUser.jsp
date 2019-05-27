@@ -54,7 +54,7 @@
                 <br>
             </div>
 
-            <div class="form-group class="col-md-3"">
+            <div class="form-group col-md-3">
                 <input type="radio" id="typeChoice1" name="user.type" value="ADMIN">
                 <label for="typeChoice1">Administrator</label>
 
@@ -64,7 +64,7 @@
             <br>
             <input class="btn btn-primary" type="submit" value="Submit">
         </form>
-        <form action="index">
+        <form action="userManagement">
             <input class="btn btn-default" type="submit" value="Return"/>
         </form>
     </div>

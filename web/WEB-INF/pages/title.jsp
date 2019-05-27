@@ -13,7 +13,7 @@
 </head>
 <p class="title">
     <span style="margin: 20px 0;border-bottom:3px solid #f0f0f0; width: 100%; height: 33px;">
-        <strong style="float:left; height: 33px; padding:0 10px; font-size: 18px; overflow: hidden; border-bottom: 3px solid #06F; color:#06F"><span style="font-size: 18px;">Star Of Questionnaire</span></strong>
+        <strong style="float:left; height: 33px; padding:0 10px; font-size: 18px; overflow: hidden; border-bottom: 3px solid #06F; color:#06F"><span style="font-size: 18px;"><a href="index.action">Star Of Questionnaire</a></span></strong>
     </span>
 </p>
 </br>

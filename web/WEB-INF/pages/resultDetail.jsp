@@ -10,58 +10,64 @@
 <html>
 <head>
     <title>Result detail</title>
+    <%@include file="./head.jsp"%>
 </head>
 <body>
-<div><s:property value="questionText"/></div>
+<%@include file="./title.jsp"%>
+<div class="container panel panel-default col-md-6">
+    <div class="panel-body">
+        <h1><s:property value="questionText"/></h1>
 
-<br>
-<br>
+        <br>
+        <br>
 
-<s:set name="correction" value="correction"/>
-<s:set name="choice" value="choice"/>
-<div
-        <s:if test="%{#correction==0&&#choice==0}">style='color: #7CFC00;'</s:if>
-        <s:if test="%{#correction==0&&#choice!=0}">style='color: #00FFFF;'</s:if>
-        <s:if test="%{#correction!=0&&#choice==0}">style='color: #FF0000;'</s:if>
->
-    <s:property value="answerText1"/></div>
+        <s:set name="correction" value="correction"/>
+        <s:set name="choice" value="choice"/>
+        <div
+                <s:if test="%{#correction==0&&#choice==0}">style='color: #7CFC00;'</s:if>
+                <s:if test="%{#correction==0&&#choice!=0}">style='color: #00FFFF;'</s:if>
+                <s:if test="%{#correction!=0&&#choice==0}">style='color: #FF0000;'</s:if>
+        >
+            <s:property value="answerText1"/></div>
 
-<div
-        <s:if test="%{#correction==1&&#choice==1}">style='color: #7CFC00;'</s:if>
-        <s:if test="%{#correction==1&&#choice!=1}">style='color: #00FFFF;'</s:if>
-        <s:if test="%{#correction!=1&&#choice==1}">style='color: #FF0000;'</s:if>
->
-    <s:property value="answerText2"/></div>
+        <div
+                <s:if test="%{#correction==1&&#choice==1}">style='color: #7CFC00;'</s:if>
+                <s:if test="%{#correction==1&&#choice!=1}">style='color: #00FFFF;'</s:if>
+                <s:if test="%{#correction!=1&&#choice==1}">style='color: #FF0000;'</s:if>
+        >
+            <s:property value="answerText2"/></div>
 
-<div
-        <s:if test="%{#correction==2&&#choice==2}">style='color: #7CFC00;'</s:if>
-        <s:if test="%{#correction==2&&#choice!=2}">style='color: #00FFFF;'</s:if>
-        <s:if test="%{#correction!=2&&#choice==2}">style='color: #FF0000;'</s:if>
->
-    <s:property value="answerText3"/></div>
+        <div
+                <s:if test="%{#correction==2&&#choice==2}">style='color: #7CFC00;'</s:if>
+                <s:if test="%{#correction==2&&#choice!=2}">style='color: #00FFFF;'</s:if>
+                <s:if test="%{#correction!=2&&#choice==2}">style='color: #FF0000;'</s:if>
+        >
+            <s:property value="answerText3"/></div>
 
-<div
-        <s:if test="%{#correction==3&&#choice==3}">style='color: #7CFC00;'</s:if>
-        <s:if test="%{#correction==3&&#choice!=3}">style='color: #00FFFF;'</s:if>
-        <s:if test="%{#correction!=3&&#choice==3}">style='color: #FF0000;'</s:if>
->
-    <s:property value="answerText4"/></div>
+        <div
+                <s:if test="%{#correction==3&&#choice==3}">style='color: #7CFC00;'</s:if>
+                <s:if test="%{#correction==3&&#choice!=3}">style='color: #00FFFF;'</s:if>
+                <s:if test="%{#correction!=3&&#choice==3}">style='color: #FF0000;'</s:if>
+        >
+            <s:property value="answerText4"/></div>
 
-<br>
+        <br>
 
 
-<s:set name="lastQuestion" value="lastQuestion"/>
-<s:if test="%{#lastQuestion==false}">
-    <form action="displayResultDetail" method="post">
-        <input type="hidden" name="resultId" value="<s:property value="resultId"/>"/>
-        <input type="hidden" name="index" value="<s:property value="index"/>"/>
-        <input type="submit" value="Next"/>
-    </form>
-</s:if>
+        <s:set name="lastQuestion" value="lastQuestion"/>
+        <s:if test="%{#lastQuestion==false}">
+            <form action="displayResultDetail" method="post">
+                <input type="hidden" name="resultId" value="<s:property value="resultId"/>"/>
+                <input type="hidden" name="index" value="<s:property value="index"/>"/>
+                <input type="submit" value="Next"/>
+            </form>
+        </s:if>
 
-<form action="index" method="post">
-    <input type="submit" value="Return"/>
-</form>
+        <form action="index" method="post">
+            <input type="submit" value="Return"/>
+        </form>
+    </div>
+</div>
 
 
 </body>

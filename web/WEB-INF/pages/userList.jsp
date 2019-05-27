@@ -78,7 +78,7 @@
             </s:iterator>
             <div>&raquo;</div>
         </div>
-        <form class="form-horizontal" action="index">
+        <form action="index">
             <input class="btn btn-primary" type="submit" value="Return"/>
         </form>
     </div>

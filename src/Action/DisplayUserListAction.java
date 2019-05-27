@@ -13,13 +13,7 @@ public class DisplayUserListAction{
 
     private Integer currentPage;
 
-
     private String searchContent;
-
-    public DisplayUserListAction(){
-        searchContent = "";
-        currentPage = 0;
-    }
 
     public ArrayList<User> getUserList() {
         return userList;
@@ -54,6 +48,8 @@ public class DisplayUserListAction{
     }
 
     public String execute() throws Exception {
+        if(searchContent == null)searchContent = "";
+        if(currentPage == null)currentPage = 1;
         userList = DAOFactory.getDAOUser().selectBySearchContent(searchContent);
         pagination();
         return "success";

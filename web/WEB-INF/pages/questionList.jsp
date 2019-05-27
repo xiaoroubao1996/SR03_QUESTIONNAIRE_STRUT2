@@ -18,7 +18,7 @@
 
 <div class="container panel panel-default col-md-6">
     <div class="panel-body">
-        <h1>Questionnaire List</h1>
+        <h1>Question List From Subject <s:property value="questionnaireSubject"/></h1>
         <table  class="table">
             <tr>
                 <td>Question Id</td>
@@ -36,42 +36,42 @@
                         <form action="displayEditQuestion" method="get">
                             <input type="hidden" name="questionId" value="${id}"/>
                             <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId" />"/>
-                            <input type="submit" value="Edit"/>
+                            <input class="btn btn-primary" type="submit" value="Edit"/>
                         </form>
                     </td>
                     <td>
                         <form action="moveUpQuestion" method="get">
                             <input type="hidden" name="questionId" value="${id}"/>
                             <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId" />"/>
-                            <input type="submit" value="Move up"/>
+                            <input class="btn btn-primary" type="submit" value="Move up"/>
                         </form>
                     </td>
                     <td>
                         <form action="moveDownQuestion" method="get">
                             <input type="hidden" name="questionId" value="${id}"/>
                             <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId" />"/>
-                            <input type="submit" value="Move down"/>
+                            <input class="btn btn-primary" type="submit" value="Move down"/>
                         </form>
                     </td>
 
                 </tr>
             </s:iterator>
         </table>
-        <table>
-            <tr>
+        <div class="btn-group">
+            <div>&laquo;</div>
                 <s:iterator begin="1" end="%{totalPage}" status="incr">
                     <td>
                         <form action="displayQuestionList" method="get">
                             <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
                             <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId" />">
-                            <input type="submit" value="<s:property value="%{#incr.index+1}" />"/>
+                            <input class="btn btn-link" type="submit" value="<s:property value="%{#incr.index+1}" />"/>
                         </form>
                     </td>
                 </s:iterator>
-            </tr>
-        </table>
-        <form action="index">
-            <input type="submit" value="Return"/>
+            <div>&raquo;</div>
+        </div>
+        <form action="displayQuestionnaireList">
+            <input class="btn btn-primary" type="submit" value="Return"/>
         </form>
     </div>
 </div>

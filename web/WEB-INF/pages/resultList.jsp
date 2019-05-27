@@ -12,63 +12,64 @@
 <html>
 <head>
     <title>Result list</title>
+    <%@include file="./head.jsp"%>
 </head>
 <body>
-<table>
+<%@include file="./title.jsp"%>
 
-    <tr>
-        <td>
-            Result Id
-        </td>
-        <td>
-            Trainee
-        </td>
-        <td>
-            Date creation
-        </td>
-        <td>
-            Score
-        </td>
-    </tr>
-    <s:iterator value="resultList">
-        <% %>
-        <tr>
-            <td>
-                <s:property value="id"/>
-            </td>
-            <td>
-                <s:property value="trainee"/>
-            </td>
-            <td>
-                <s:property value="dateCreation"/>
-            </td>
-            <td>
-                <s:property value="score"/>
-            </td>
-            <td>
-                <form action="displayResultDetail" method="get">
-                    <input type="hidden" name="resultId" value="${id}"/>
-                    <input type="submit" value="Detail"/>
-                </form>
-            </td>
+<div class="container panel panel-default col-md-6">
+    <div class="panel-body">
+        <h1>Result List</h1>
+        <table class="table">
+            <tr>
+                <td>Result Id</td>
+                <td>Trainee</td>
+                <td>Date creation</td>
+                <td>Score</td>
+            </tr>
+            <s:iterator value="resultList">
+                <% %>
+                <tr>
+                    <td>
+                        <s:property value="id"/>
+                    </td>
+                    <td>
+                        <s:property value="trainee"/>
+                    </td>
+                    <td>
+                        <s:property value="dateCreation"/>
+                    </td>
+                    <td>
+                        <s:property value="score"/>
+                    </td>
+                    <td>
+                        <form action="displayResultDetail" method="get">
+                            <input type="hidden" name="resultId" value="${id}"/>
+                            <input class="btn btn-primary btn-xs" type="submit" value="Detail"/>
+                        </form>
+                    </td>
 
-        </tr>
-    </s:iterator>
-</table>
-<table>
-    <tr>
-        <s:iterator begin="1" end="%{totalPage}" status="incr">
-            <td>
-                <form action="displayResultList" method="get">
-                    <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
-                    <input type="submit" value="<s:property value="%{#incr.index+1}" />"/>
-                </form>
-            </td>
-        </s:iterator>
-    </tr>
-</table>
-<form action="index">
-    <input type="submit" value="Return"/>
-</form>
+                </tr>
+            </s:iterator>
+        </table>
+
+        <div class="btn-group">
+            <div>&laquo;</div>
+                <s:iterator begin="1" end="%{totalPage}" status="incr">
+                    <td>
+                        <form action="displayResultList" method="get">
+                            <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
+                            <input class="btn btn-link" type="submit" value="<s:property value="%{#incr.index+1}" />"/>
+                        </form>
+                    </td>
+                </s:iterator>
+            <div>&raquo;</div>
+        </div>
+        <form action="index">
+            <input class="btn btn-primary" type="submit" value="Return"/>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

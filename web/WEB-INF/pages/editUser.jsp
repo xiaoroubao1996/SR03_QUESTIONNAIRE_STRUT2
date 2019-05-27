@@ -80,7 +80,7 @@
             <br>
             <input class="btn btn-primary" type="submit" value="Submit">
         </form>
-        <form action="index">
+        <form action="displayUserList">
             <input class="btn btn-default" type="submit" value="Return"/>
         </form>
     </div>

@@ -24,7 +24,7 @@
         <%
             if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
         %>
-        <form class="form-horizontal" action="createQuestionnairePage" method="post">
+        <form class="form-horizontal" action="createQuestionnairePage" method="get">
             <label> Create Questionnaire </label>
             <input class="btn btn-primary" type="submit" value="Create">
         </form>
@@ -52,9 +52,9 @@
                 %>
             </tr>
 
-            <s:iterator value="questionnaireList">
+            <s:iterator id="questionnaire" value="questionnaireList">
 
-                <tr>
+                <tr <s:if test="%{#questionnaire.status == @Model.Constant$STATUS@INACTIVE}">class="alert-danger"</s:if>>
                     <td><s:property value="id"/></td>
                     <td><s:property value="subject"/></td>
                     <%
@@ -86,7 +86,7 @@
                         <%
                             if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
                         %>
-                        <form action="displayQuestionList" method="post">
+                        <form action="displayQuestionList" method="get">
                             <input type="hidden" name="currentPage" value="1"/>
                             <input type="hidden" name="questionnaireId" value="${id}"/>
                             <input  class="btn btn-primary btn-xs" type="submit" value="Manage questions">

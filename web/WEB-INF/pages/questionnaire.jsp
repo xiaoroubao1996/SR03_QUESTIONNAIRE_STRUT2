@@ -12,55 +12,68 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>
-        Questionnaire
-    </title>
+    <title>Questionnaire</title>
+    <%@include file="./head.jsp"%>
 </head>
 <body>
-<%
-    if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
-%>
-<form action="createQuestionPage" method="post">
-    <label> Create New Question </label>
-    <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
-    <input type="submit" value="Create">
-</form>
-<%
-    }
-%>
-
-<form action="displayQuestionnaire" method="post">
-    <s:property value="questionText"/>
-    <br>
-    <br>
-    <input type="radio" id="choice1" name="choice" value="0">
-    <label for="choice1"><s:property value="answerText1"/></label>
-
-    <br>
-    <input type="radio" id="choice2" name="choice" value="1">
-    <label for="choice2"><s:property value="answerText2"/></label>
-
-    <br>
-    <input type="radio" id="choice3" name="choice" value="2">
-    <label for="choice3"><s:property value="answerText3"/></label>
-
-    <br>
-    <input type="radio" id="choice4" name="choice" value="3">
-    <label for="choice4"><s:property value="answerText4"/></label>
-
-    Score
-    <input type="hidden" name="jsonString" value="<s:property value="jsonString"/>"/>
-    <input type="hidden" name="index" value="<s:property value="index"/>"/>
-    <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
-
-    <br>
+<%@include file="./title.jsp"%>
 
 
-    <input type="submit" value="Next"/>
+<div class="container panel panel-default col-md-6">
+    <div class="panel-body">
+        <%
+            if (session.getAttribute("type") == Constant.USERTYPE.ADMIN) {
+        %>
+        <form class="form-horizontal" action="createQuestionPage" method="post">
+            <label> Create New Question </label>
+            <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
+            <input class="btn btn-primary" type="submit" value="Create">
+        </form>
+        <%
+            }
+        %>
 
-</form>
-<form action="index" method="post">
-    <input type="submit" value="Abandon"/>
-</form>
+        <form class="form-horizontal" action="displayQuestionnaire" method="post">
+            <h1><s:property value="questionText"/></h1>
+            <br>
+            <br>
+            <div class="form-group">
+                <input class="col-md-1" type="radio" id="choice1" name="choice" value="0">
+                <label class="col-md-3" for="choice1"><s:property value="answerText1"/></label>
+                <br>
+            </div>
+
+            <div class="form-group">
+                <input class="col-md-1" type="radio" id="choice2" name="choice" value="1">
+                <label class="col-md-3" for="choice2"><s:property value="answerText2"/></label>
+                <br>
+            </div>
+
+            <div class="form-group">
+                <input class="col-md-1" type="radio" id="choice3" name="choice" value="2">
+                <label  class="col-md-3" for="choice3"><s:property value="answerText3"/></label>
+                <br>
+            </div>
+
+            <div class="form-group">
+                <input class="col-md-1" type="radio" id="choice4" name="choice" value="3">
+                <label class="col-md-3" for="choice4"><s:property value="answerText4"/></label>
+            </div>
+            <%--<h2>Score</h2>--%>
+            <input type="hidden" name="jsonString" value="<s:property value="jsonString"/>"/>
+            <input type="hidden" name="index" value="<s:property value="index"/>"/>
+            <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
+            <br>
+
+
+            <input class="btn btn-primary" type="submit" value="Next"/>
+
+        </form>
+        <form action="displayQuestionnaireList" method="get">
+            <input class="btn btn-default" type="submit" value="Abandon"/>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

@@ -38,6 +38,10 @@
             <result>/WEB-INF/pages/index.jsp</result>
         </action>
 
+        <action name="loginPage">
+            <result>/WEB-INF/pages/login.jsp</result>
+        </action>
+
         <action name="loginError">
             <result>/WEB-INF/pages/login.jsp</result>
         </action>
@@ -72,7 +76,7 @@
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 
-        <action name="userList"
+        <action name="displayUserList"
                 class="Action.DisplayUserListAction"
                 method="execute">
             <interceptor-ref name="isAdminStack"/>
@@ -92,7 +96,7 @@
                 class="Action.EditUserAction"
                 method="execute">
             <interceptor-ref name="isAdminStack"/>
-            <result name="success">/WEB-INF/pages/userManagement.jsp</result>
+            <result name="success" type="redirectAction">displayUserList</result>
             <result name="authorizationFailure">/WEB-INF/pages/authorizationFailure.jsp</result>
         </action>
 
@@ -151,7 +155,7 @@
         <action name="editQuestionnaire"
                 class="Action.EditQuestionnaireAction"
                 method="execute">
-            <result name="success">/WEB-INF/pages/index.jsp</result>
+            <result name="success" type="redirectAction">displayQuestionnaireList</result>
         </action>
 
         <action name="displayQuestionList"

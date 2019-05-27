@@ -9,20 +9,29 @@
 <html>
 <head>
     <title>Create questionnaire</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%@include file="./head.jsp"%>
 </head>
 <body>
-<form action="createQuestionnaire" method="post">
-    <label> Subject Of Questionnaire </label>
-    <input type="text" name="subject"/>
-    <br>
-    <input type="submit" value="Submit">
-</form>
+<%@include file="./title.jsp"%>
 
-<form action="index">
-    <input type="submit" value="Return"/>
-</form>
+
+<div class="container panel panel-default col-md-6">
+    <div class="panel-body">
+        <h1>Create Questionnaire</h1>
+        <form class="form-horizontal" action="createQuestionnaire" method="post">
+            <div class="form-group">
+                <label> Subject Of Questionnaire </label>
+                <input type="text" name="subject"/>
+                <br>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+
+        <form action="displayQuestionnaireList">
+            <input class="btn btn-default" type="submit" value="Return"/>
+        </form>
+    </div>
+</div>
 
 
 </body>

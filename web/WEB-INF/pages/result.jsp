@@ -10,14 +10,21 @@
 <html>
 <head>
     <title>Result</title>
+    <%@include file="./head.jsp"%>
 </head>
 <body>
-<div>Subject: <s:property value="subject"/></div>
-<br>
-<div>Score: <s:property value="score"/></div>
-<br>
-<form action="index" method="post">
-    <input type="submit" value="Return index"/>
-</form>
+<%@include file="./title.jsp"%>
+
+<div class="container panel panel-default col-md-6">
+    <div class="panel-body">
+        <h1>Subject: <s:property value="subject"/></h1>
+        <br>
+        <h2>Score: <s:property value="score"/></h2>
+        <br>
+        <form action="index" method="post">
+            <input class="btn btn-primary" type="submit" value="Return index"/>
+        </form>
+    </div>
+</div>
 </body>
 </html>

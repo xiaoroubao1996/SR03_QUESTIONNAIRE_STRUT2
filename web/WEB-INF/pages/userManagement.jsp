@@ -23,10 +23,12 @@
             <input class="btn btn-primary" type="submit" value="Create user"/>
         </form>
 
-        <form action="userList" method="get">
-            <input type="hidden" name="searchContent" value=""/>
-            <input type="hidden" name="currentPage" value="1"/>
+        <form action="displayUserList" method="get">
             <input class="btn btn-primary" type="submit" value="User list"/>
+        </form>
+
+        <form class="form-horizontal" action="index">
+            <input class="btn btn-primary" type="submit" value="Return"/>
         </form>
     </div>
 </div>
