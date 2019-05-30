@@ -23,33 +23,35 @@
 
         <s:set name="correction" value="correction"/>
         <s:set name="choice" value="choice"/>
+        <h3><s:if test="%{#correction==#choice}">You are right</s:if><s:else>You are wrong</s:else></h3>
+
         <div
                 <s:if test="%{#correction==0&&#choice==0}">style='color: #7CFC00;'</s:if>
                 <s:if test="%{#correction==0&&#choice!=0}">style='color: #00FFFF;'</s:if>
                 <s:if test="%{#correction!=0&&#choice==0}">style='color: #FF0000;'</s:if>
         >
-            <s:property value="answerText1"/></div>
+            I: <s:property value="answerText1"/></div>
 
         <div
                 <s:if test="%{#correction==1&&#choice==1}">style='color: #7CFC00;'</s:if>
                 <s:if test="%{#correction==1&&#choice!=1}">style='color: #00FFFF;'</s:if>
                 <s:if test="%{#correction!=1&&#choice==1}">style='color: #FF0000;'</s:if>
         >
-            <s:property value="answerText2"/></div>
+            II: <s:property value="answerText2"/></div>
 
         <div
                 <s:if test="%{#correction==2&&#choice==2}">style='color: #7CFC00;'</s:if>
                 <s:if test="%{#correction==2&&#choice!=2}">style='color: #00FFFF;'</s:if>
                 <s:if test="%{#correction!=2&&#choice==2}">style='color: #FF0000;'</s:if>
         >
-            <s:property value="answerText3"/></div>
+            III: <s:property value="answerText3"/></div>
 
         <div
                 <s:if test="%{#correction==3&&#choice==3}">style='color: #7CFC00;'</s:if>
                 <s:if test="%{#correction==3&&#choice!=3}">style='color: #00FFFF;'</s:if>
                 <s:if test="%{#correction!=3&&#choice==3}">style='color: #FF0000;'</s:if>
         >
-            <s:property value="answerText4"/></div>
+            IV: <s:property value="answerText4"/></div>
 
         <br>
 
@@ -59,12 +61,12 @@
             <form action="displayResultDetail" method="post">
                 <input type="hidden" name="resultId" value="<s:property value="resultId"/>"/>
                 <input type="hidden" name="index" value="<s:property value="index"/>"/>
-                <input type="submit" value="Next"/>
+                <input class="btn btn-primary" type="submit" value="Next"/>
             </form>
         </s:if>
 
         <form action="index" method="post">
-            <input type="submit" value="Return"/>
+            <input class="btn btn-default" type="submit" value="Return"/>
         </form>
     </div>
 </div>
