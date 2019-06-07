@@ -1,5 +1,7 @@
 package Action;
 
+import Helper.QuestionHelper;
+import Helper.SortHelper;
 import Model.DAOFactory;
 import Model.Question;
 import Model.User;
@@ -16,6 +18,7 @@ public class DisplayQuestionListAction {
     public String execute() throws Exception {
         if(currentPage == null) currentPage = 1;
         questionList = DAOFactory.getDAOQuestion().selectByQuestionnaireID(Integer.valueOf(questionnaireId));
+        SortHelper.sortQuestion(questionList);
         questionnaireSubject = DAOFactory.getDAOQuestionnaire().selectByID(Integer.valueOf(questionnaireId)).getSubject();
         pagination();
         return "success";
