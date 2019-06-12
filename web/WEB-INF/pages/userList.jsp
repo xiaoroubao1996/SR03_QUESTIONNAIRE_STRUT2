@@ -70,7 +70,7 @@
         <div class="btn-group">
             <div>&laquo;</div>
             <s:iterator begin="1" end="%{totalPage}" status="incr">
-                <form  class="form-horizontal" action="userList" method="get">
+                <form  class="form-horizontal" action="displayUserList" method="get">
                     <input type="hidden" name="searchContent" value="<s:property value="searchContent"/>" />
                     <input type="hidden" name="currentPage" value="<s:property value="%{#incr.index+1}" />">
                     <input class="btn btn-link"  type="submit" value="<s:property value="%{#incr.index+1}" />"/>
