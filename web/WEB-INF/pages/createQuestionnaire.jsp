@@ -28,7 +28,7 @@
         </form>
 
         <form action="displayQuestionnaireList">
-            <input class="btn btn-default" type="submit" value="Return"/>
+            <input class="btn btn-secondary" type="submit" value="Return"/>
         </form>
     </div>
 </div>

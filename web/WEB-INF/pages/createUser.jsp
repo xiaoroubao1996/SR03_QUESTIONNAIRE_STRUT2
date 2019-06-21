@@ -65,7 +65,7 @@
             <input class="btn btn-primary" type="submit" value="Submit">
         </form>
         <form action="userManagement">
-            <input class="btn btn-default" type="submit" value="Return"/>
+            <input class="btn btn-secondary" type="submit" value="Return"/>
         </form>
     </div>
 </div>

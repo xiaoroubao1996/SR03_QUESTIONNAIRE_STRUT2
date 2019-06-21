@@ -22,7 +22,7 @@
 <div class="container panel panel-default col-md-6">
     <div class="panel-body">
         <h1>User List</h1>
-        <form class="form-horizontal" action="userList" method="get">
+        <form class="form-horizontal" action="displayUserList.action" method="get">
             <div class="form-group">
                 <input class="form-control col-md-5"  style="display:inline;" name="searchContent" value="<s:property value="searchContent"/>">
                 <input type="hidden" name="currentPage" value="1">

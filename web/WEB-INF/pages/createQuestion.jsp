@@ -61,10 +61,10 @@
                 <br>
             </div>
             <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
-            <input type="submit" value="Submit">
+            <input class="btn btn-primary" type="submit" value="Submit">
         </form>
         <form action="index">
-            <input class="btn btn-primary" type="submit" value="Return"/>
+            <input class="btn btn-secondary" type="submit" value="Return"/>
         </form>
     </div>
 </div>

@@ -12,11 +12,11 @@
     <title>Success</title>
 </head>
 <body>
-<div>Success</div>
+<h1 class="align-middle">Success</h1>
 <form action="displayQuestionList" method="get">
     <input type="hidden" name="currentPage" value="1"/>
     <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
-    <input type="submit" value="Return"/>
+    <input class="btn btn-primary" type="submit" value="Return"/>
 </form>
 </body>
 </html>

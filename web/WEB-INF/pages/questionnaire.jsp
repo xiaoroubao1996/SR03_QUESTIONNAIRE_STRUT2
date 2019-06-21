@@ -70,7 +70,7 @@
 
         </form>
         <form action="displayQuestionnaireList" method="get">
-            <input class="btn btn-default" type="submit" value="Abandon"/>
+            <input class="btn btn-secondary" type="submit" value="Abandon"/>
         </form>
     </div>
 </div>

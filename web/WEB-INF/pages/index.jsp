@@ -18,11 +18,11 @@
     <div class="panel-body">
         <h1>Welcome</h1>
         <form action="displayQuestionnaireList" method="get">
-            <input class="btn btn-primary" type="submit" value="Questionnaire list"/>
+            <input class="btn btn-primary  col-md-9" type="submit" value="Questionnaire list"/>
         </form>
         <form action="displayResultList" method="post">
             <input type="hidden" name="currentPage" value="1"/>
-            <input class="btn btn-primary" type="submit" value="Result list"/>
+            <input class="btn btn-primary  col-md-9" type="submit" value="Result list"/>
         </form>
 
         <%
@@ -30,7 +30,7 @@
         %>
 
         <form action="userManagement" method="get">
-            <input class="btn btn-primary" type="submit" value="User Management"/>
+            <input class="btn btn-primary  col-md-9" type="submit" value="User Management"/>
         </form>
 
         <%
@@ -38,7 +38,7 @@
         %>
 
         <form action="loginPage">
-            <input class="btn btn-primary" type="submit" value="Return"/>
+            <input class="btn btn-primary  col-md-9" type="submit" value="Return"/>
         </form>
     </h1>
 </div>

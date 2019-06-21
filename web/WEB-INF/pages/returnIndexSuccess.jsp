@@ -11,9 +11,9 @@
     <title>Success</title>
 </head>
 <body>
-<div>Success</div>
+<h1 class="align-middle">Success</h1>
 <form action="index">
-    <input type="submit" value="Return"/>
+    <input class="btn btn-primary" type="submit" value="Return"/>
 </form>
 </body>
 </html>

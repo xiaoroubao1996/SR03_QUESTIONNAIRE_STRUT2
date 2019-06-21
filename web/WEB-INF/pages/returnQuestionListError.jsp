@@ -12,11 +12,11 @@
     <title>Error</title>
 </head>
 <body>
-<div>Error</div>
+<h1 class="align-middle">Error</h1>
 <form action="displayQuestionList" method="get">
     <input type="hidden" name="currentPage" value="1"/>
     <input type="hidden" name="questionnaireId" value="<s:property value="questionnaireId"/>">
-    <input type="submit" value="Return"/>
+    <input class="btn btn-primary"type="submit" value="Return"/>
 </form>
 </body>
 </html>

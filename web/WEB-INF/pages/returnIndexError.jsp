@@ -12,9 +12,9 @@
     <title>Error</title>
 </head>
 <body>
-<div>Error</div>
+<h1 class="align-middle">Error</h1>
 <form action="index">
-    <input type="submit" value="Return"/>
+    <input class="btn btn-primary" type="submit" value="Return"/>
 </form>
 </body>
 </html>
